@@ -17,6 +17,8 @@
 		2A4872CD1DB17750005B9841 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A4872CB1DB17750005B9841 /* LaunchScreen.storyboard */; };
 		2A4872D81DB17750005B9841 /* shootingGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4872D71DB17750005B9841 /* shootingGameTests.swift */; };
 		2A4872E31DB17750005B9841 /* shootingGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4872E21DB17750005B9841 /* shootingGameUITests.swift */; };
+		2ADE2B8E1DB5B566007DB2C0 /* alien.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ADE2B8C1DB5B566007DB2C0 /* alien.png */; };
+		2ADE2B8F1DB5B566007DB2C0 /* rocket.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ADE2B8D1DB5B566007DB2C0 /* rocket.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		2A4872DE1DB17750005B9841 /* shootingGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = shootingGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A4872E21DB17750005B9841 /* shootingGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shootingGameUITests.swift; sourceTree = "<group>"; };
 		2A4872E41DB17750005B9841 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2ADE2B8C1DB5B566007DB2C0 /* alien.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alien.png; sourceTree = "<group>"; };
+		2ADE2B8D1DB5B566007DB2C0 /* rocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rocket.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,15 +107,13 @@
 		2A4872BB1DB17750005B9841 /* shootingGame */ = {
 			isa = PBXGroup;
 			children = (
+				2ADE2B8B1DB5B4EC007DB2C0 /* Supporting Files */,
 				2A4872BC1DB17750005B9841 /* AppDelegate.swift */,
 				2A4872BE1DB17750005B9841 /* GameScene.sks */,
 				2A4872C01DB17750005B9841 /* Actions.sks */,
 				2A4872C21DB17750005B9841 /* GameScene.swift */,
 				2A4872C41DB17750005B9841 /* GameViewController.swift */,
 				2A4872C61DB17750005B9841 /* Main.storyboard */,
-				2A4872C91DB17750005B9841 /* Assets.xcassets */,
-				2A4872CB1DB17750005B9841 /* LaunchScreen.storyboard */,
-				2A4872CE1DB17750005B9841 /* Info.plist */,
 			);
 			path = shootingGame;
 			sourceTree = "<group>";
@@ -132,6 +134,18 @@
 				2A4872E41DB17750005B9841 /* Info.plist */,
 			);
 			path = shootingGameUITests;
+			sourceTree = "<group>";
+		};
+		2ADE2B8B1DB5B4EC007DB2C0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2A4872CB1DB17750005B9841 /* LaunchScreen.storyboard */,
+				2A4872C91DB17750005B9841 /* Assets.xcassets */,
+				2ADE2B8C1DB5B566007DB2C0 /* alien.png */,
+				2ADE2B8D1DB5B566007DB2C0 /* rocket.png */,
+				2A4872CE1DB17750005B9841 /* Info.plist */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,11 +258,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ADE2B8F1DB5B566007DB2C0 /* rocket.png in Resources */,
 				2A4872C81DB17750005B9841 /* Main.storyboard in Resources */,
 				2A4872BF1DB17750005B9841 /* GameScene.sks in Resources */,
 				2A4872CA1DB17750005B9841 /* Assets.xcassets in Resources */,
 				2A4872CD1DB17750005B9841 /* LaunchScreen.storyboard in Resources */,
 				2A4872C11DB17750005B9841 /* Actions.sks in Resources */,
+				2ADE2B8E1DB5B566007DB2C0 /* alien.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +542,7 @@
 				2A4872E91DB17750005B9841 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2A4872EA1DB17750005B9841 /* Build configuration list for PBXNativeTarget "shootingGameTests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +551,7 @@
 				2A4872EC1DB17750005B9841 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2A4872ED1DB17750005B9841 /* Build configuration list for PBXNativeTarget "shootingGameUITests" */ = {
 			isa = XCConfigurationList;
@@ -542,6 +560,7 @@
 				2A4872EF1DB17750005B9841 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
