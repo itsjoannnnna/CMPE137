@@ -19,6 +19,7 @@
 		2A4872E31DB17750005B9841 /* shootingGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4872E21DB17750005B9841 /* shootingGameUITests.swift */; };
 		2ADE2B8E1DB5B566007DB2C0 /* alien.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ADE2B8C1DB5B566007DB2C0 /* alien.png */; };
 		2ADE2B8F1DB5B566007DB2C0 /* rocket.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ADE2B8D1DB5B566007DB2C0 /* rocket.png */; };
+		2ADE2B911DB5BEC1007DB2C0 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ADE2B901DB5BEC1007DB2C0 /* bullet.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		2A4872E41DB17750005B9841 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2ADE2B8C1DB5B566007DB2C0 /* alien.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alien.png; sourceTree = "<group>"; };
 		2ADE2B8D1DB5B566007DB2C0 /* rocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rocket.png; sourceTree = "<group>"; };
+		2ADE2B901DB5BEC1007DB2C0 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 		2ADE2B8B1DB5B4EC007DB2C0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2ADE2B901DB5BEC1007DB2C0 /* bullet.png */,
 				2A4872CB1DB17750005B9841 /* LaunchScreen.storyboard */,
 				2A4872C91DB17750005B9841 /* Assets.xcassets */,
 				2ADE2B8C1DB5B566007DB2C0 /* alien.png */,
@@ -263,6 +266,7 @@
 				2A4872BF1DB17750005B9841 /* GameScene.sks in Resources */,
 				2A4872CA1DB17750005B9841 /* Assets.xcassets in Resources */,
 				2A4872CD1DB17750005B9841 /* LaunchScreen.storyboard in Resources */,
+				2ADE2B911DB5BEC1007DB2C0 /* bullet.png in Resources */,
 				2A4872C11DB17750005B9841 /* Actions.sks in Resources */,
 				2ADE2B8E1DB5B566007DB2C0 /* alien.png in Resources */,
 			);
