@@ -21,7 +21,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var Score = Int()
     
     @IBInspectable
-    var Player = SKSpriteNode(imageNamed: "rocket.png")
+    var Player = SKSpriteNode(imageNamed: "rocket1.png")
     
     var ScoreLabel = UILabel()
     
@@ -60,18 +60,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let firstBody: SKPhysicsBody = contact.bodyA //takes first body that hits and do stuff with it
         let secondBody: SKPhysicsBody = contact.bodyB //takes second body that hits
         
-        //checks if the bullets have hit the aliens
+        //checks if the bullets have hit the aliens or aliens hit bullets
         if((firstBody.categoryBitMask == PhysicsCategory.Aliens && secondBody.categoryBitMask == PhysicsCategory.Bullet) || (firstBody.categoryBitMask == PhysicsCategory.Bullet && secondBody.categoryBitMask == PhysicsCategory.Aliens)){
             collisionWithBullet(Alien: firstBody.node as! SKSpriteNode, Bullet: secondBody.node as! SKSpriteNode)
         }
             
-        //checks if the alien hit the players
+        //checks if the alien hit the players, or player hits an alien
         else if((firstBody.categoryBitMask == PhysicsCategory.Aliens && secondBody.categoryBitMask == PhysicsCategory.Player) || (firstBody.categoryBitMask == PhysicsCategory.Player && secondBody.categoryBitMask == PhysicsCategory.Aliens)){
             collisionWithPlayer(Alien: firstBody.node as! SKSpriteNode, Player: secondBody.node as! SKSpriteNode)
         }
 
     }
     
+    //once bullets hit the enemies, they will be removed from the screen and so will the bullet
+    //score will be increased by 1 when this happens
     func collisionWithBullet(Alien: SKSpriteNode, Bullet: SKSpriteNode){
         Alien.removeFromParent()
         Bullet.removeFromParent()
@@ -79,12 +81,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ScoreLabel.text = "Score: \(Score)"
     }
     
+    //once collided with the player, the alien has been removed and the player has been removed
     func collisionWithPlayer(Alien: SKSpriteNode, Player: SKSpriteNode){
         Alien.removeFromParent()
         Player.removeFromParent()
+        
+        //after the player has been hit by the alien, the game will end and the endscene screen will pop up
+        self.view?.presentScene(EndScene())
+        //Removes the score from the endScene
+        ScoreLabel.removeFromSuperview()
     }
     
-    
+    //function to shoot the bullets from behind the rocketship
     func shootBullets(){
         let Bullet = SKSpriteNode(imageNamed: "bullet.png")
         Bullet.zPosition = -5
@@ -104,10 +112,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
     }
     
+    
+    //function where aliens are falling from the sky
     func shootAlienEnemies(){
         let Aliens = SKSpriteNode(imageNamed: "alien.png")
         let minValue = self.size.width/100
-        let maxValue = self.size.width - 30 // makes sure it doesn't go off scene
+        let maxValue = self.size.width - 30 //-30 makes sure it doesn't go off scene
         let spawnPoint = UInt32(maxValue - minValue)
         Aliens.position = CGPoint(x: CGFloat(arc4random_uniform(spawnPoint)), y: self.size.height)
         
