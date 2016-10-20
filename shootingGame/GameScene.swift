@@ -118,6 +118,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let Aliens = SKSpriteNode(imageNamed: "alien.png")
         let minValue = self.size.width/100
         let maxValue = self.size.width - 30 //-30 makes sure it doesn't go off scene
+        
+        //THROWING ERROR WHEN THE RESTART BUTTON IS HIT
         let spawnPoint = UInt32(maxValue - minValue)
         Aliens.position = CGPoint(x: CGFloat(arc4random_uniform(spawnPoint)), y: self.size.height)
         
