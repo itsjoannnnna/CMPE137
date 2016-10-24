@@ -18,6 +18,7 @@ struct PhysicsCategory{
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    var HighScore = Int()
     var Score = Int()
     
     @IBInspectable
@@ -30,7 +31,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
+        let HighscoreDefault = UserDefaults.standard
+        if (HighscoreDefault.value(forKey: "Highscore") != nil){
+            HighScore = HighscoreDefault.value(forKey: "Highscore") as! Int //as! NSInteger
+        }
+        else{
+            HighScore = 0
+        }
+        
         physicsWorld.contactDelegate = self
+        
+        self.scene?.backgroundColor = UIColor.lightGray
         
         Player.position = CGPoint(x: self.size.width/12, y: -self.frame.size.height/3)
         Player.physicsBody = SKPhysicsBody(rectangleOf: Player.size)
@@ -67,6 +78,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
         //checks if the alien hit the players, or player hits an alien
         else if((firstBody.categoryBitMask == PhysicsCategory.Aliens && secondBody.categoryBitMask == PhysicsCategory.Player) || (firstBody.categoryBitMask == PhysicsCategory.Player && secondBody.categoryBitMask == PhysicsCategory.Aliens)){
+            
+            //THROWS ERROR WHEN RESTART IS PRESSED
             collisionWithPlayer(Alien: firstBody.node as! SKSpriteNode, Player: secondBody.node as! SKSpriteNode)
         }
 
@@ -83,11 +96,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     //once collided with the player, the alien has been removed and the player has been removed
     func collisionWithPlayer(Alien: SKSpriteNode, Player: SKSpriteNode){
+        let scoreDefault = UserDefaults.standard
+        scoreDefault.set( Score, forKey: "Score")
+        scoreDefault.synchronize()
+        
+        if(Score > HighScore){
+            let HighscoreDefault = UserDefaults.standard
+            HighscoreDefault.set(Score, forKey: "Highscore")
+        }
+
         Alien.removeFromParent()
         Player.removeFromParent()
         
         //after the player has been hit by the alien, the game will end and the endscene screen will pop up
         self.view?.presentScene(EndScene())
+        
         //Removes the score from the endScene
         ScoreLabel.removeFromSuperview()
     }
@@ -117,7 +140,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func shootAlienEnemies(){
         let Aliens = SKSpriteNode(imageNamed: "alien.png")
         let minValue = self.size.width/100
-        let maxValue = self.size.width - 30 //-30 makes sure it doesn't go off scene
+        let maxValue = self.size.width //-30 makes sure it doesn't go off scene
         
         //THROWING ERROR WHEN THE RESTART BUTTON IS HIT
         let spawnPoint = UInt32(maxValue - minValue)
@@ -138,28 +161,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(Aliens)
     }
     
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
         for touch: AnyObject in touches{
             let location = touch.location(in: self)
-            
-            
             Player.position.x = location.x
         }
-        
-        
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch: AnyObject in touches{
             let location = touch.location(in: self)
-            
-            
             Player.position.x = location.x
         }
     }
-    
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered

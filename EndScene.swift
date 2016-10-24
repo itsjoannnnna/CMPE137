@@ -12,6 +12,9 @@ import SpriteKit
 class EndScene : SKScene {
     
     var restartBtn : UIButton!
+    var Highscore : Int!
+    var ScoreLabel : UILabel!
+    var HighScoreLabel : UILabel!
     
     override func didMove(to view: SKView) {
         scene?.backgroundColor = UIColor.white
@@ -22,11 +25,29 @@ class EndScene : SKScene {
         restartBtn.setTitle("Restart", for: UIControlState.normal)
         restartBtn.setTitleColor(UIColor.darkGray, for: UIControlState.normal)
         restartBtn.addTarget(self, action: #selector(EndScene.Restart), for: UIControlEvents.touchUpInside)
-        self.view?.addSubview(restartBtn)
+        self.view!.addSubview(restartBtn)
+        
+        let scoreDefault = UserDefaults.standard
+        let Score = scoreDefault.value(forKey: "Score") as! Int
+        
+        let HighscoreDefault = UserDefaults.standard
+        Highscore = HighscoreDefault.value(forKey: "Highscore") as! Int
+        
+        ScoreLabel = UILabel(frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))
+        ScoreLabel.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/4)
+        ScoreLabel.text = "\(Score)"
+        self.view?.addSubview(ScoreLabel)
+        
+        HighScoreLabel = UILabel(frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))
+        HighScoreLabel.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/2)
+        HighScoreLabel.text = "\(Highscore)"
+        self.view?.addSubview(HighScoreLabel)
     }
     
     func Restart(){
         self.view?.presentScene(GameScene(), transition: SKTransition.crossFade(withDuration: 0.3))
         restartBtn.removeFromSuperview()
+        HighScoreLabel.removeFromSuperview()
+        ScoreLabel.removeFromSuperview()
     }
 }
