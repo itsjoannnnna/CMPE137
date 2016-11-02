@@ -73,8 +73,8 @@ class EndScene : SKScene {
     }
     
     func Homescreen(){
-        let scene = HomeScene(fileNamed: "HomeScene")
-        self.view?.presentScene(scene)
+        let homeScene = HomeScene(fileNamed: "HomeScene")
+        self.view?.presentScene(homeScene)
         GameOverLabel.removeFromSuperview()
         homescreenBtn.removeFromSuperview()
         restartBtn.removeFromSuperview()
