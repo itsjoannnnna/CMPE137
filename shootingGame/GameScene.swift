@@ -19,6 +19,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var HighScore = Int()
     var Score = Int()
+    var pauseButton: SKSpriteNode?
+    var playButton: SKSpriteNode?
+    let backgroundMusic = SKAudioNode(fileNamed: "NewYork.mp3")
     
     @IBInspectable
     var Player = SKSpriteNode(imageNamed: "rocket1.png")
@@ -29,6 +32,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var spinnyNode : SKShapeNode?
     
     override func didMove(to view: SKView) {
+        
+        //Background Music
+        backgroundMusic.autoplayLooped = true
+        addChild(backgroundMusic)
+        
+        playButton = childNode(withName: "playButton") as? SKSpriteNode
+        playButton?.isHidden = true
+        pauseButton = childNode(withName: "pauseButton") as? SKSpriteNode
         
         let HighscoreDefault = UserDefaults.standard
         if (HighscoreDefault.value(forKey: "Highscore") != nil){
@@ -152,6 +163,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let location = touch.location(in: self)
             Player.position.x = location.x
         }
+        
+        let touch = touches.first! as UITouch
+        let touchLocation = touch.location(in: self)
+        //print(touchLocation)
+        
+        let nodes = self.atPoint(touchLocation)
+        if nodes.name == "pauseButton" {
+            let showPlayButtonAction = SKAction.run(showPlayButton)
+            let pauseGameAction = SKAction.run(pauseGame)
+            let pauseSequence = SKAction.sequence([showPlayButtonAction, pauseGameAction])
+            run(pauseSequence)
+            
+        }
+        if nodes.name == "playButton" {
+            resumeGame()
+        }
+
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -163,5 +191,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+    }
+    
+    func pauseGame() {
+        self.view!.isPaused = true
+    }
+    
+    func resumeGame() {
+        playButton!.isHidden = true
+        pauseButton!.isHidden = false
+        self.view?.isPaused = false
+    }
+    
+    func showPlayButton() {
+        pauseButton!.isHidden = true
+        playButton!.isHidden = false
     }
 }
