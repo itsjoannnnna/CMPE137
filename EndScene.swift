@@ -63,7 +63,7 @@ class EndScene : SKScene {
     
     func Restart(){
         //Fixed restart issue, but rocket is zoomed in once first restart is pressed
-        let scene = GameScene(fileNamed: "GameScene")
+        let scene = GameScene1(fileNamed: "GameScene1")
         self.view?.presentScene(scene)
         GameOverLabel.removeFromSuperview()
         homescreenBtn.removeFromSuperview()
@@ -73,8 +73,8 @@ class EndScene : SKScene {
     }
     
     func Homescreen(){
-        let homeScene = HomeScene(fileNamed: "HomeScene")
-        self.view?.presentScene(homeScene)
+        let scene = GameScene(fileNamed: "GameScene")
+        self.view?.presentScene(scene)
         GameOverLabel.removeFromSuperview()
         homescreenBtn.removeFromSuperview()
         restartBtn.removeFromSuperview()
