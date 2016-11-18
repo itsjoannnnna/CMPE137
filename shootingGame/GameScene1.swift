@@ -90,6 +90,8 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
             secondBody.node?.removeFromParent()
             Score+=1
             ScoreLabel.text = "Score: \(Score)"
+            playButton?.removeFromParent()
+            pauseButton?.removeFromParent()
         }
             
             //checks if the alien hit the players, or player hits an alien
@@ -107,6 +109,8 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
             secondBody.node?.removeFromParent()
             self.view?.presentScene(EndScene())
             ScoreLabel.removeFromSuperview()
+            playButton?.removeFromParent()
+            pauseButton?.removeFromParent()
         }
         
     }
