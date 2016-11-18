@@ -21,10 +21,11 @@
 		2A4872D81DB17750005B9841 /* shootingGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4872D71DB17750005B9841 /* shootingGameTests.swift */; };
 		2A4872E31DB17750005B9841 /* shootingGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4872E21DB17750005B9841 /* shootingGameUITests.swift */; };
 		2A80029B1DCAF70B00C0FDF1 /* NewYork.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2A80029A1DCAF70A00C0FDF1 /* NewYork.mp3 */; };
-		2A80029D1DCB002100C0FDF1 /* play.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2A80029C1DCB002100C0FDF1 /* play.jpg */; };
 		2ACD6FBA1DC2C7E200CD6CB4 /* HomeScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ACD6FB91DC2C7E200CD6CB4 /* HomeScene.swift */; };
 		2ADE2B8E1DB5B566007DB2C0 /* alien.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ADE2B8C1DB5B566007DB2C0 /* alien.png */; };
 		2ADE2B911DB5BEC1007DB2C0 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ADE2B901DB5BEC1007DB2C0 /* bullet.png */; };
+		2AE956361DDF75E500A8A5BF /* pause.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2AE956341DDF75E500A8A5BF /* pause.jpg */; };
+		2AE956371DDF75E500A8A5BF /* play.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2AE956351DDF75E500A8A5BF /* play.jpg */; };
 		839C56D81102199F08A8591C /* libPods-shootingGame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEB1557FF359647F381637E /* libPods-shootingGame.a */; };
 /* End PBXBuildFile section */
 
@@ -67,10 +68,11 @@
 		2A4872E21DB17750005B9841 /* shootingGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shootingGameUITests.swift; sourceTree = "<group>"; };
 		2A4872E41DB17750005B9841 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A80029A1DCAF70A00C0FDF1 /* NewYork.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NewYork.mp3; sourceTree = "<group>"; };
-		2A80029C1DCB002100C0FDF1 /* play.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = play.jpg; sourceTree = "<group>"; };
 		2ACD6FB91DC2C7E200CD6CB4 /* HomeScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeScene.swift; path = ../HomeScene.swift; sourceTree = "<group>"; };
 		2ADE2B8C1DB5B566007DB2C0 /* alien.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alien.png; sourceTree = "<group>"; };
 		2ADE2B901DB5BEC1007DB2C0 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
+		2AE956341DDF75E500A8A5BF /* pause.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pause.jpg; sourceTree = "<group>"; };
+		2AE956351DDF75E500A8A5BF /* play.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = play.jpg; sourceTree = "<group>"; };
 		BFEB1557FF359647F381637E /* libPods-shootingGame.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-shootingGame.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE60A89633158003D4C065FF /* Pods-shootingGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shootingGame.release.xcconfig"; path = "Pods/Target Support Files/Pods-shootingGame/Pods-shootingGame.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -132,6 +134,7 @@
 				2A4872BE1DB17750005B9841 /* GameScene.sks */,
 				2A04C6101DB93D9400989E11 /* EndScene.swift */,
 				2A4872C01DB17750005B9841 /* Actions.sks */,
+				2A4872C91DB17750005B9841 /* Assets.xcassets */,
 				2A4872C21DB17750005B9841 /* GameScene.swift */,
 				2ACD6FB91DC2C7E200CD6CB4 /* HomeScene.swift */,
 				2A4872C41DB17750005B9841 /* GameViewController.swift */,
@@ -161,11 +164,11 @@
 		2ADE2B8B1DB5B4EC007DB2C0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				2A80029C1DCB002100C0FDF1 /* play.jpg */,
 				2A80029A1DCAF70A00C0FDF1 /* NewYork.mp3 */,
 				2ADE2B901DB5BEC1007DB2C0 /* bullet.png */,
+				2AE956341DDF75E500A8A5BF /* pause.jpg */,
+				2AE956351DDF75E500A8A5BF /* play.jpg */,
 				2A4872CB1DB17750005B9841 /* LaunchScreen.storyboard */,
-				2A4872C91DB17750005B9841 /* Assets.xcassets */,
 				2A04C60E1DB93A3F00989E11 /* rocket1.png */,
 				2ADE2B8C1DB5B566007DB2C0 /* alien.png */,
 				2A4872CE1DB17750005B9841 /* Info.plist */,
@@ -304,13 +307,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A80029B1DCAF70B00C0FDF1 /* NewYork.mp3 in Resources */,
+				2AE956371DDF75E500A8A5BF /* play.jpg in Resources */,
 				2A4872C81DB17750005B9841 /* Main.storyboard in Resources */,
 				2A4872BF1DB17750005B9841 /* GameScene.sks in Resources */,
 				2A0D86C81DCA926100EE3AA1 /* GoogleService-Info.plist in Resources */,
+				2AE956361DDF75E500A8A5BF /* pause.jpg in Resources */,
 				2A4872CA1DB17750005B9841 /* Assets.xcassets in Resources */,
 				2A4872CD1DB17750005B9841 /* LaunchScreen.storyboard in Resources */,
 				2ADE2B911DB5BEC1007DB2C0 /* bullet.png in Resources */,
-				2A80029D1DCB002100C0FDF1 /* play.jpg in Resources */,
 				2A04C60F1DB93A3F00989E11 /* rocket1.png in Resources */,
 				2A4872C11DB17750005B9841 /* Actions.sks in Resources */,
 				2ADE2B8E1DB5B566007DB2C0 /* alien.png in Resources */,

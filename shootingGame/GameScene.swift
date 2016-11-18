@@ -52,7 +52,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         
         //background color for the playing field
-        self.scene?.backgroundColor = UIColor.lightGray
+        self.scene?.backgroundColor = UIColor.white
         
         //positioning of the player in the field. makes it stay at the bottom of the string
         Player.position = CGPoint(x: self.size.width/12, y: -self.frame.size.height/3)
@@ -176,10 +176,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             run(pauseSequence)
             
         }
-        if nodes.name == "playButton" {
-            resumeGame()
+        else if nodes.name == "playButton"{
+            self.resumeGame()
         }
-
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
