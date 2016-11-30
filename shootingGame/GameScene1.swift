@@ -6,6 +6,7 @@
 //  Copyright © 2016 Jo-Anna Marie Reyes. All rights reserved.
 //
 
+import Foundation
 import SpriteKit
 import GameplayKit
 
@@ -18,12 +19,15 @@ struct PhysicsCategory{
 class GameScene1: SKScene, SKPhysicsContactDelegate {
     
     var HighScore = Int()
+    var LevelLabel = UILabel!
     var Score = Int()
-    var pauseButton: SKSpriteNode?
-    var playButton: SKSpriteNode?
+    var Level = Int()
+//    var pauseButton: SKSpriteNode?
+    var pause = SKSpriteNode(imageNamed:"pause.jpg")
+    var play = SKSpriteNode(imageNamed: "play.jpg")
+//    var playButton: SKSpriteNode?
     let backgroundMusic = SKAudioNode(fileNamed: "NewYork.mp3")
     
-    @IBInspectable
     var Player = SKSpriteNode(imageNamed: "rocket1.png")
     
     var ScoreLabel = UILabel()
@@ -37,9 +41,9 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         backgroundMusic.autoplayLooped = true
         addChild(backgroundMusic)
         
-        playButton = childNode(withName: "playButton") as? SKSpriteNode
-        playButton?.isHidden = true
-        pauseButton = childNode(withName: "pauseButton") as? SKSpriteNode
+//        playButton = childNode(withName: "playButton") as? SKSpriteNode
+//        playButton?.isHidden = true
+//        pauseButton = childNode(withName: "pauseButton") as? SKSpriteNode
         
         let HighscoreDefault = UserDefaults.standard
         if (HighscoreDefault.value(forKey: "Highscore") != nil){
@@ -51,11 +55,16 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         
         physicsWorld.contactDelegate = self
         
+        //play/pause button position
+        play.position = CGPoint(x: self.size.width/12, y:self.frame.size.height/7)
+        play.isHidden = true
+        pause.position = CGPoint(x: self.size.width/12, y:self.frame.size.height/7)
+        
         //background color for the playing field
         self.scene?.backgroundColor = UIColor.white
         
         //positioning of the player in the field. makes it stay at the bottom of the string
-        Player.position = CGPoint(x: self.size.width/12, y: -self.frame.size.height/3)
+        Player.position = CGPoint(x: self.size.width/12, y: self.frame.size.height/7.5)
         Player.physicsBody = SKPhysicsBody(rectangleOf: Player.size)
         Player.physicsBody?.affectedByGravity = false
         
@@ -66,17 +75,30 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         //increasing the amount of time the bullets will come out of the rocket ship
         _ = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.shootBullets), userInfo: nil, repeats: true)
         
-        //increase more enemies at any certain time, decrease time intervals < 1.0
-        _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(self.shootAlienEnemies), userInfo: nil, repeats: true)
-        self.addChild(Player)
+        if(Score <= 40){
+            _ = Timer.scheduledTimer(timeInterval: 0.6, target: self, selector: #selector(self.shootBullets), userInfo: nil, repeats: true)
+        }
         
+        if(Score <= 100){
+            _ = Timer.scheduledTimer(timeInterval: 0.7, target: self, selector: #selector(self.shootBullets), userInfo: nil, repeats: true)
+        }
+        if(Score <= 160){
+            _ = Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(self.shootBullets), userInfo: nil, repeats: true)
+        }
+        
+        if(Score <= 220){
+            _ = Timer.scheduledTimer(timeInterval: 0.9, target: self, selector: #selector(self.shootBullets), userInfo: nil, repeats: true)
+        }
+        
+        //increase more enemies at any certain time, decrease time intervals < 1.0
+        _ = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(self.shootAlienEnemies), userInfo: nil, repeats: true)
+        self.addChild(Player)
         
         //adds the score label to the top of the screen
         ScoreLabel.text = "\(Score)"
         ScoreLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
         ScoreLabel.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.3)
         self.view?.addSubview(ScoreLabel)
-        
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -90,8 +112,12 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
             secondBody.node?.removeFromParent()
             Score+=1
             ScoreLabel.text = "Score: \(Score)"
-            playButton?.removeFromParent()
-            pauseButton?.removeFromParent()
+//            playButton?.removeFromParent()
+//            pauseButton?.removeFromParent()
+            
+            play.removeFromParent()
+            pause.removeFromParent()
+
         }
             
             //checks if the alien hit the players, or player hits an alien
@@ -109,10 +135,12 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
             secondBody.node?.removeFromParent()
             self.view?.presentScene(EndScene())
             ScoreLabel.removeFromSuperview()
-            playButton?.removeFromParent()
-            pauseButton?.removeFromParent()
+//            playButton?.removeFromParent()
+//            pauseButton?.removeFromParent()
+            
+            play.removeFromParent()
+            pause.removeFromParent()
         }
-        
     }
     
     //function to shoot the bullets from behind the rocketship
@@ -132,7 +160,52 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         Bullet.physicsBody?.affectedByGravity = false // so the bullets don't fly off
         Bullet.physicsBody?.isDynamic = false
         self.addChild(Bullet)
+    }
+    
+    func goToNextLevel(){
+        if(Score > 0 && Score < 19){
+            Level = 1
+        }
+        if(Score <= 20){
+            Level = 2
+        }
+        if(Score <= 40){
+            Level = 3
+        }
+        if(Score <= 60){
+            Level = 4
+        }
+        if(Score <= 80){
+            Level = 5
+        }
+        if(Score <= 100){
+            Level = 6
+        }
+        if(Score <= 120){
+            Level = 7
+        }
+        if(Score <= 140){
+            Level = 8
+        }
+        if(Score <= 160){
+            Level = 9
+        }
+        if(Score <= 180){
+            Level = 10
+        }
+        if(Score <= 200){
+            Level = 11
+        }
+        if(Score <= 220){
+            Level = 12
+        }
         
+        LevelLabel = UILabel(frame:CGRect(x: 0, y:0, width: view!.frame.size.width/2, height: 30))
+        LevelLabel?.textColor = UIColor.red
+        LevelLabel.font = UIFont.boldSystemFont(ofSize: 32.0)
+        LevelLabel.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/5)
+        LevelLabel.text = "Level \(Level)"
+        self.view?.addSubview(GameOverLabel)
     }
     
     //function where aliens are falling from the sky
@@ -147,7 +220,55 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         Aliens.position = CGPoint(x: CGFloat(arc4random_uniform(spawnPoint)), y: self.size.height)
         
         //for the levels, we can decrease the duration to make it faster
-        let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 5.0)
+        //LEVEL 2
+        if (Score >= 20){
+            let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 7.5)
+            Aliens.run(SKAction.repeatForever(fallFromSky))
+        }
+        if(Score >= 40){
+            let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 7.0)
+            Aliens.run(SKAction.repeatForever(fallFromSky))
+        }
+        if (Score >= 60){
+            let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 6.5)
+            Aliens.run(SKAction.repeatForever(fallFromSky))
+        }
+        if(Score >= 80){
+            let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 6.0)
+            Aliens.run(SKAction.repeatForever(fallFromSky))
+        }
+        //LEVEL 6
+        if (Score >= 100){
+            let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 5.5)
+            Aliens.run(SKAction.repeatForever(fallFromSky))
+        }
+        if(Score >= 120){
+            let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 5.0)
+            Aliens.run(SKAction.repeatForever(fallFromSky))
+        }
+        if (Score >= 140){
+            let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 4.5)
+            Aliens.run(SKAction.repeatForever(fallFromSky))
+        }
+        if(Score >= 160){
+            let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 4.0)
+            Aliens.run(SKAction.repeatForever(fallFromSky))
+        }
+        if(Score >= 180){
+            let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 3.5)
+            Aliens.run(SKAction.repeatForever(fallFromSky))
+        }
+        if (Score >= 200){
+            let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 3.0)
+            Aliens.run(SKAction.repeatForever(fallFromSky))
+        }
+        //LEVEL 12
+        if(Score >= 220){
+            let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 2.5)
+            Aliens.run(SKAction.repeatForever(fallFromSky))
+        }
+        //Regular level
+        let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 8.0)
         Aliens.run(SKAction.repeatForever(fallFromSky))
         
         Aliens.physicsBody = SKPhysicsBody(rectangleOf: Aliens.size)
@@ -172,17 +293,31 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         let touchLocation = touch.location(in: self)
         //print(touchLocation)
         
+        
+        //play and pause
         let nodes = self.atPoint(touchLocation)
-        if nodes.name == "pauseButton" {
+        if nodes.name == "pause"{
             let showPlayButtonAction = SKAction.run(showPlayButton)
             let pauseGameAction = SKAction.run(pauseGame)
             let pauseSequence = SKAction.sequence([showPlayButtonAction, pauseGameAction])
             run(pauseSequence)
             
         }
-        else if nodes.name == "playButton"{
+        else if nodes.name == "play"{
             self.resumeGame()
         }
+
+//        let nodes = self.atPoint(touchLocation)
+//        if nodes.name == "pauseButton" {
+//            let showPlayButtonAction = SKAction.run(showPlayButton)
+//            let pauseGameAction = SKAction.run(pauseGame)
+//            let pauseSequence = SKAction.sequence([showPlayButtonAction, pauseGameAction])
+//            run(pauseSequence)
+//            
+//        }
+//        else if nodes.name == "playButton"{
+//            self.resumeGame()
+//        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -201,13 +336,18 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
     }
     
     func resumeGame() {
-        playButton!.isHidden = true
-        pauseButton!.isHidden = false
+        play.isHidden = true
+        pause.isHidden = false
         self.view?.isPaused = false
+//        playButton!.isHidden = true
+//        pauseButton!.isHidden = false
+//        self.view?.isPaused = false
     }
     
     func showPlayButton() {
-        pauseButton!.isHidden = true
-        playButton!.isHidden = false
+        pause.isHidden = true
+        play.isHidden = false
+//        pauseButton!.isHidden = true
+//        playButton!.isHidden = false
     }
 }
