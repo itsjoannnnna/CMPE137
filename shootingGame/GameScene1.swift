@@ -17,9 +17,8 @@ struct PhysicsCategory{
 }
 
 class GameScene1: SKScene, SKPhysicsContactDelegate {
-    
+
     var HighScore = Int()
-    var LevelLabel = UILabel!
     var Score = Int()
     var Level = Int()
 //    var pauseButton: SKSpriteNode?
@@ -31,6 +30,7 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
     var Player = SKSpriteNode(imageNamed: "rocket1.png")
     
     var ScoreLabel = UILabel()
+    var LevelLabel = UILabel()
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
@@ -96,9 +96,18 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         
         //adds the score label to the top of the screen
         ScoreLabel.text = "\(Score)"
-        ScoreLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
+        ScoreLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
         ScoreLabel.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.3)
+        ScoreLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
         self.view?.addSubview(ScoreLabel)
+
+        //adds the level to the screen
+        LevelLabel = UILabel(frame:CGRect(x: 200, y: 0, width: 300, height: 20))
+        LevelLabel.textColor = UIColor.red
+        LevelLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
+        LevelLabel.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.3)
+        LevelLabel.text = "Level \(Level)"
+        self.view?.addSubview(LevelLabel)
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -111,13 +120,9 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
             firstBody.node?.removeFromParent()
             secondBody.node?.removeFromParent()
             Score+=1
+            updateLevelLabel()
             ScoreLabel.text = "Score: \(Score)"
-//            playButton?.removeFromParent()
-//            pauseButton?.removeFromParent()
-            
-            play.removeFromParent()
-            pause.removeFromParent()
-
+            LevelLabel.text = "Level: \(Level)"
         }
             
             //checks if the alien hit the players, or player hits an alien
@@ -135,11 +140,52 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
             secondBody.node?.removeFromParent()
             self.view?.presentScene(EndScene())
             ScoreLabel.removeFromSuperview()
+            LevelLabel.removeFromSuperview()
 //            playButton?.removeFromParent()
 //            pauseButton?.removeFromParent()
             
             play.removeFromParent()
             pause.removeFromParent()
+        }
+    }
+    
+    //updates the levels on the top of the playing field
+    func updateLevelLabel(){
+        if(Score >= 0 && Score <= 20){
+            Level = 1
+        }
+        if(Score > 20 && Score <= 40){
+            Level = 2
+        }
+        if(Score > 40 && Score <= 60){
+            Level = 3
+        }
+        if(Score > 60 && Score <= 80){
+            Level = 4
+        }
+        if(Score > 80 && Score <= 100){
+            Level = 5
+        }
+        if(Score > 100 && Score <= 120){
+            Level = 6
+        }
+        if(Score > 120 && Score <= 140){
+            Level = 7
+        }
+        if(Score > 140 && Score <= 160){
+            Level = 8
+        }
+        if(Score > 160 && Score <= 180){
+            Level = 9
+        }
+        if(Score > 180 && Score <= 200){
+            Level = 10
+        }
+        if(Score > 200 && Score <= 220){
+            Level = 11
+        }
+        if(Score > 220 && Score <= 240){
+            Level = 12
         }
     }
     
@@ -162,52 +208,6 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         self.addChild(Bullet)
     }
     
-    func goToNextLevel(){
-        if(Score > 0 && Score < 19){
-            Level = 1
-        }
-        if(Score <= 20){
-            Level = 2
-        }
-        if(Score <= 40){
-            Level = 3
-        }
-        if(Score <= 60){
-            Level = 4
-        }
-        if(Score <= 80){
-            Level = 5
-        }
-        if(Score <= 100){
-            Level = 6
-        }
-        if(Score <= 120){
-            Level = 7
-        }
-        if(Score <= 140){
-            Level = 8
-        }
-        if(Score <= 160){
-            Level = 9
-        }
-        if(Score <= 180){
-            Level = 10
-        }
-        if(Score <= 200){
-            Level = 11
-        }
-        if(Score <= 220){
-            Level = 12
-        }
-        
-        LevelLabel = UILabel(frame:CGRect(x: 0, y:0, width: view!.frame.size.width/2, height: 30))
-        LevelLabel?.textColor = UIColor.red
-        LevelLabel.font = UIFont.boldSystemFont(ofSize: 32.0)
-        LevelLabel.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/5)
-        LevelLabel.text = "Level \(Level)"
-        self.view?.addSubview(GameOverLabel)
-    }
-    
     //function where aliens are falling from the sky
     func shootAlienEnemies(){
         let Aliens = SKSpriteNode(imageNamed: "alien.png")
@@ -220,53 +220,6 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         Aliens.position = CGPoint(x: CGFloat(arc4random_uniform(spawnPoint)), y: self.size.height)
         
         //for the levels, we can decrease the duration to make it faster
-        //LEVEL 2
-        if (Score >= 20){
-            let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 7.5)
-            Aliens.run(SKAction.repeatForever(fallFromSky))
-        }
-        if(Score >= 40){
-            let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 7.0)
-            Aliens.run(SKAction.repeatForever(fallFromSky))
-        }
-        if (Score >= 60){
-            let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 6.5)
-            Aliens.run(SKAction.repeatForever(fallFromSky))
-        }
-        if(Score >= 80){
-            let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 6.0)
-            Aliens.run(SKAction.repeatForever(fallFromSky))
-        }
-        //LEVEL 6
-        if (Score >= 100){
-            let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 5.5)
-            Aliens.run(SKAction.repeatForever(fallFromSky))
-        }
-        if(Score >= 120){
-            let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 5.0)
-            Aliens.run(SKAction.repeatForever(fallFromSky))
-        }
-        if (Score >= 140){
-            let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 4.5)
-            Aliens.run(SKAction.repeatForever(fallFromSky))
-        }
-        if(Score >= 160){
-            let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 4.0)
-            Aliens.run(SKAction.repeatForever(fallFromSky))
-        }
-        if(Score >= 180){
-            let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 3.5)
-            Aliens.run(SKAction.repeatForever(fallFromSky))
-        }
-        if (Score >= 200){
-            let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 3.0)
-            Aliens.run(SKAction.repeatForever(fallFromSky))
-        }
-        //LEVEL 12
-        if(Score >= 220){
-            let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 2.5)
-            Aliens.run(SKAction.repeatForever(fallFromSky))
-        }
         //Regular level
         let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 8.0)
         Aliens.run(SKAction.repeatForever(fallFromSky))
