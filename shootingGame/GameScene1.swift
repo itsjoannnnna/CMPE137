@@ -21,6 +21,11 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
     var HighScore = Int()
     var Score = Int()
     var Level = Int()
+    
+    var timeIntervalForBullet : TimeInterval = 0.2
+    var timeIntervalForAliens : TimeInterval = 0.1
+    var timeIntervalForShootingAliens :TimeInterval = 8.0
+    
 //    var pauseButton: SKSpriteNode?
     var pause = SKSpriteNode(imageNamed:"pause.jpg")
     var play = SKSpriteNode(imageNamed: "play.jpg")
@@ -73,25 +78,10 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         Player.physicsBody?.isDynamic = false
         
         //increasing the amount of time the bullets will come out of the rocket ship
-        _ = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.shootBullets), userInfo: nil, repeats: true)
-        
-        if(Score <= 40){
-            _ = Timer.scheduledTimer(timeInterval: 0.6, target: self, selector: #selector(self.shootBullets), userInfo: nil, repeats: true)
-        }
-        
-        if(Score <= 100){
-            _ = Timer.scheduledTimer(timeInterval: 0.7, target: self, selector: #selector(self.shootBullets), userInfo: nil, repeats: true)
-        }
-        if(Score <= 160){
-            _ = Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(self.shootBullets), userInfo: nil, repeats: true)
-        }
-        
-        if(Score <= 220){
-            _ = Timer.scheduledTimer(timeInterval: 0.9, target: self, selector: #selector(self.shootBullets), userInfo: nil, repeats: true)
-        }
+        _ = Timer.scheduledTimer(timeInterval: timeIntervalForAliens, target: self, selector: #selector(self.shootBullets), userInfo: nil, repeats: true)
         
         //increase more enemies at any certain time, decrease time intervals < 1.0
-        _ = Timer.scheduledTimer(timeInterval: 0.3, target: self, selector: #selector(self.shootAlienEnemies), userInfo: nil, repeats: true)
+        _ = Timer.scheduledTimer(timeInterval: timeIntervalForBullet, target: self, selector: #selector(self.shootAlienEnemies), userInfo: nil, repeats: true)
         self.addChild(Player)
         
         //adds the score label to the top of the screen
@@ -120,6 +110,11 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
             firstBody.node?.removeFromParent()
             secondBody.node?.removeFromParent()
             Score+=1
+            if Score % 20 == 0{
+                timeIntervalForBullet = timeIntervalForBullet + 0.1
+                timeIntervalForAliens = timeIntervalForAliens - 0.1
+                timeIntervalForShootingAliens = timeIntervalForShootingAliens - 0.5
+            }
             updateLevelLabel()
             ScoreLabel.text = "Score: \(Score)"
             LevelLabel.text = "Level: \(Level)"
@@ -167,8 +162,7 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
             Level = 5
         }
         if(Score > 100 && Score <= 120){
-            Level = 6
-        }
+            Level = 6        }
         if(Score > 120 && Score <= 140){
             Level = 7
         }
@@ -198,12 +192,11 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         let shooting = SKAction.moveTo(y: self.size.height + 30, duration: 1.0)
         let shootingDone = SKAction.removeFromParent()
         Bullet.run(SKAction.sequence([shooting, shootingDone]))
-        //Bullet.run(SKAction.repeatForever(shooting))
         
         Bullet.physicsBody = SKPhysicsBody(rectangleOf: Bullet.size)
         Bullet.physicsBody?.categoryBitMask = PhysicsCategory.Bullet
-        Bullet.physicsBody?.contactTestBitMask = PhysicsCategory.Aliens //bullets go away from the
-        Bullet.physicsBody?.affectedByGravity = false // so the bullets don't fly off
+        Bullet.physicsBody?.contactTestBitMask = PhysicsCategory.Aliens
+        Bullet.physicsBody?.affectedByGravity = false
         Bullet.physicsBody?.isDynamic = false
         self.addChild(Bullet)
     }
@@ -221,7 +214,7 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         
         //for the levels, we can decrease the duration to make it faster
         //Regular level
-        let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 8.0)
+        let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: timeIntervalForShootingAliens)
         Aliens.run(SKAction.repeatForever(fallFromSky))
         
         Aliens.physicsBody = SKPhysicsBody(rectangleOf: Aliens.size)
