@@ -9,7 +9,6 @@ class GameScene: SKScene {
         let titleLabel = SKSpriteNode(imageNamed: "rocketFire.png")
         titleLabel.position = CGPoint(x: frame.midX, y: frame.midY+250)
         addChild(titleLabel)
-
         
         //Start Game Button
         let startGameButton = SKSpriteNode(imageNamed: "StartButton.png")
@@ -26,7 +25,11 @@ class GameScene: SKScene {
         gameShopButton.position = CGPoint(x: frame.midX, y: frame.midY-100)
         gameShopButton.name = "gameshop"
         addChild(gameShopButton)
-        
+        //Login/SignUp Button
+        let loginSignButton = SKSpriteNode(imageNamed: "StartButton.png")
+        loginSignButton.position = CGPoint(x: frame.midX, y: frame.midY-200)
+        loginSignButton.name = "login"
+        addChild(loginSignButton)
     }
     
     //When buttons are touched
@@ -52,6 +55,13 @@ class GameScene: SKScene {
         //Game Shop Button goes to GameShop scene
         if(touchedNode.name == "gameshop"){
             let gameOverScene = GameShop(size: size)
+            gameOverScene.scaleMode = scaleMode
+            let transitionType = SKTransition.flipHorizontal(withDuration: 1.0)
+            view?.presentScene(gameOverScene,transition: transitionType)
+        }
+        //Login/Sign Up Button goes to Login scene
+        if(touchedNode.name == "login"){
+            let gameOverScene = LoginScene(size: size)
             gameOverScene.scaleMode = scaleMode
             let transitionType = SKTransition.flipHorizontal(withDuration: 1.0)
             view?.presentScene(gameOverScene,transition: transitionType)

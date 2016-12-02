@@ -1,22 +1,23 @@
 //
-//  GameShop.swift
+//  LoginScene.swift
 //  shootingGame
 //
-//  Created by Jo-Anna Marie Reyes on 11/18/16.
+//  Created by Jo-Anna Marie Reyes on 12/2/16.
 //  Copyright © 2016 Jo-Anna Marie Reyes. All rights reserved.
 //
 
 import Foundation
 import SpriteKit
 
-class GameShop: SKScene {
+class LoginScene : SKScene {
     var returnBtn : UIButton!
+    var signUpBtn : UIButton!
     
     override func didMove(to view: SKView) {
         //Backgrount color
         scene?.backgroundColor = UIColor.white
         
-        let GameShopTitleLabel = SKSpriteNode(imageNamed: "shop.png")
+        let GameShopTitleLabel = SKSpriteNode(imageNamed: "login1.png")
         GameShopTitleLabel.position = CGPoint(x: frame.midX, y: frame.midY+250)
         addChild(GameShopTitleLabel)
         
@@ -28,6 +29,15 @@ class GameShop: SKScene {
         returnBtn.setTitleColor(UIColor.darkGray, for: UIControlState.normal)
         returnBtn.addTarget(self, action: #selector(GameShop.Return), for: UIControlEvents.touchUpInside)
         self.view!.addSubview(returnBtn)
+        
+        //Return button for going back to HomeScreen
+        signUpBtn = UIButton (frame: CGRect(x: 0, y:0, width: view.frame.size.width, height: 30))
+        signUpBtn.center = CGPoint(x: frame.midX, y: frame.midY+200)
+        
+        signUpBtn.setTitle("No account? Sign up here!", for: UIControlState.normal)
+        signUpBtn.setTitleColor(UIColor.darkGray, for: UIControlState.normal)
+        signUpBtn.addTarget(self, action: #selector(LoginScene.SignUp), for: UIControlEvents.touchUpInside)
+        self.view!.addSubview(signUpBtn)
     }
     
     //Return function to redirect scene to HomeScreen
@@ -37,6 +47,12 @@ class GameShop: SKScene {
         //starting transition between scenes
         self.view?.presentScene(scene)
         returnBtn.removeFromSuperview()
-        
+        signUpBtn.removeFromSuperview()
+    }
+    func SignUp(){
+        let scene = SignUpScene(fileNamed: "SignUpScene")
+        self.view?.presentScene(scene)
+        signUpBtn.removeFromSuperview()
+        returnBtn.removeFromSuperview()
     }
 }

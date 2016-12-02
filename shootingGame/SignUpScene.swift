@@ -1,22 +1,22 @@
 //
-//  GameShop.swift
+//  SignUpScene.swift
 //  shootingGame
 //
-//  Created by Jo-Anna Marie Reyes on 11/18/16.
+//  Created by Jo-Anna Marie Reyes on 12/2/16.
 //  Copyright © 2016 Jo-Anna Marie Reyes. All rights reserved.
 //
 
 import Foundation
 import SpriteKit
 
-class GameShop: SKScene {
-    var returnBtn : UIButton!
+class SignUpScene : SKScene {
+    var returnBtn :UIButton!
     
     override func didMove(to view: SKView) {
         //Backgrount color
         scene?.backgroundColor = UIColor.white
         
-        let GameShopTitleLabel = SKSpriteNode(imageNamed: "shop.png")
+        let GameShopTitleLabel = SKSpriteNode(imageNamed: "signup1.png")
         GameShopTitleLabel.position = CGPoint(x: frame.midX, y: frame.midY+250)
         addChild(GameShopTitleLabel)
         

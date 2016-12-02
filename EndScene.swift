@@ -8,6 +8,8 @@
 
 import Foundation
 import SpriteKit
+import UIKit
+import GameplayKit
 
 class EndScene : SKScene {
     
@@ -27,6 +29,11 @@ class EndScene : SKScene {
         GameOverLabel.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/5)
         GameOverLabel.text = "Game Over!"
         self.view?.addSubview(GameOverLabel)
+        
+        
+        let gameOverLabel = SKSpriteNode(imageNamed: "gameover.png")
+        gameOverLabel.position = CGPoint(x: frame.midX, y: frame.midY+250)
+        addChild(gameOverLabel)
         
 //        restartBtn = UIButton (frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))
 //        restartBtn.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/2)
