@@ -11,7 +11,7 @@ import SpriteKit
 
 class EndScene : SKScene {
     
-    var restartBtn : UIButton!
+    //var restartBtn : UIButton!
     var homescreenBtn: UIButton!
     var GameOverLabel: UILabel!
     var Highscore : Int!
@@ -21,20 +21,20 @@ class EndScene : SKScene {
     override func didMove(to view: SKView) {
         scene?.backgroundColor = UIColor.white
         
-        GameOverLabel = UILabel(frame:CGRect(x: 0, y:0, width: view.frame.size.width/2, height: 30))
+        GameOverLabel = UILabel(frame:CGRect(x: 40, y:0, width: view.frame.size.width/1.6, height: 30))
         GameOverLabel.textColor = UIColor.red
-        GameOverLabel.font = UIFont.boldSystemFont(ofSize: 32.0)
+        GameOverLabel.font = UIFont.boldSystemFont(ofSize: 40.0)
         GameOverLabel.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/5)
         GameOverLabel.text = "Game Over!"
         self.view?.addSubview(GameOverLabel)
         
-        restartBtn = UIButton (frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))
-        restartBtn.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/2)
-        
-        restartBtn.setTitle("Restart", for: UIControlState.normal)
-        restartBtn.setTitleColor(UIColor.darkGray, for: UIControlState.normal)
-        restartBtn.addTarget(self, action: #selector(EndScene.Restart), for: UIControlEvents.touchUpInside)
-        self.view!.addSubview(restartBtn)
+//        restartBtn = UIButton (frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))
+//        restartBtn.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/2)
+//        
+//        restartBtn.setTitle("Restart", for: UIControlState.normal)
+//        restartBtn.setTitleColor(UIColor.darkGray, for: UIControlState.normal)
+//        restartBtn.addTarget(self, action: #selector(EndScene.Restart), for: UIControlEvents.touchUpInside)
+//        self.view!.addSubview(restartBtn)
         
         homescreenBtn = UIButton (frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))
         homescreenBtn.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/3)
@@ -61,23 +61,23 @@ class EndScene : SKScene {
         self.view?.addSubview(HighScoreLabel)
     }
     
-    func Restart(){
-        //Fixed restart issue, but rocket is zoomed in once first restart is pressed
-        let scene = GameScene1(fileNamed: "GameScene1")
-        self.view?.presentScene(scene)
-        GameOverLabel.removeFromSuperview()
-        homescreenBtn.removeFromSuperview()
-        restartBtn.removeFromSuperview()
-        HighScoreLabel.removeFromSuperview()
-        ScoreLabel.removeFromSuperview()
-    }
+//    func Restart(){
+//        //Fixed restart issue, but rocket is zoomed in once first restart is pressed
+//        let scene = GameScene1(fileNamed: "GameScene1")
+//        self.view?.presentScene(scene)
+//        GameOverLabel.removeFromSuperview()
+//        homescreenBtn.removeFromSuperview()
+//        restartBtn.removeFromSuperview()
+//        HighScoreLabel.removeFromSuperview()
+//        ScoreLabel.removeFromSuperview()
+//    }
     
     func Homescreen(){
         let scene = GameScene(fileNamed: "GameScene")
         self.view?.presentScene(scene)
         GameOverLabel.removeFromSuperview()
         homescreenBtn.removeFromSuperview()
-        restartBtn.removeFromSuperview()
+        //restartBtn.removeFromSuperview()
         HighScoreLabel.removeFromSuperview()
         ScoreLabel.removeFromSuperview()
     }

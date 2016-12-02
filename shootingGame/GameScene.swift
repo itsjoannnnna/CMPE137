@@ -5,6 +5,12 @@ class GameScene: SKScene {
     
     //Buttons on the HomeScene
     override func didMove(to view: SKView) {
+        
+        let titleLabel = SKSpriteNode(imageNamed: "rocketFire.png")
+        titleLabel.position = CGPoint(x: frame.midX, y: frame.midY+250)
+        addChild(titleLabel)
+
+        
         //Start Game Button
         let startGameButton = SKSpriteNode(imageNamed: "StartButton.png")
         startGameButton.position = CGPoint(x: frame.midX, y: frame.midY+100)
@@ -38,7 +44,7 @@ class GameScene: SKScene {
         }
         //Unlimited Gameplay Button goes to unlimited GameScene
         if(touchedNode.name == "unlimitedgame"){
-            let gameOverScene = GameScene1(size: size)
+            let gameOverScene = SpecialScene(size: size)
             gameOverScene.scaleMode = scaleMode
             let transitionType = SKTransition.flipHorizontal(withDuration: 1.0)
             view?.presentScene(gameOverScene,transition: transitionType)

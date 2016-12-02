@@ -26,6 +26,9 @@
 		2A65C8111DDF8BF300FD3ABE /* GameScene1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2A65C8101DDF8BF300FD3ABE /* GameScene1.sks */; };
 		2A65C8131DDF8C2F00FD3ABE /* EndScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2A65C8121DDF8C2F00FD3ABE /* EndScene.sks */; };
 		2A80029B1DCAF70B00C0FDF1 /* NewYork.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2A80029A1DCAF70A00C0FDF1 /* NewYork.mp3 */; };
+		2AD294801DF20E3800A959A1 /* SpecialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD2947F1DF20E3800A959A1 /* SpecialScene.swift */; };
+		2AD294821DF20E4A00A959A1 /* SpecialScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2AD294811DF20E4A00A959A1 /* SpecialScene.sks */; };
+		2AD294841DF2151400A959A1 /* rocketFire.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD294831DF2151400A959A1 /* rocketFire.png */; };
 		2ADE2B8E1DB5B566007DB2C0 /* alien.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ADE2B8C1DB5B566007DB2C0 /* alien.png */; };
 		2ADE2B911DB5BEC1007DB2C0 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ADE2B901DB5BEC1007DB2C0 /* bullet.png */; };
 		2AE956361DDF75E500A8A5BF /* pause.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2AE956341DDF75E500A8A5BF /* pause.jpg */; };
@@ -77,6 +80,9 @@
 		2A65C8101DDF8BF300FD3ABE /* GameScene1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene1.sks; sourceTree = "<group>"; };
 		2A65C8121DDF8C2F00FD3ABE /* EndScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EndScene.sks; sourceTree = "<group>"; };
 		2A80029A1DCAF70A00C0FDF1 /* NewYork.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NewYork.mp3; sourceTree = "<group>"; };
+		2AD2947F1DF20E3800A959A1 /* SpecialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialScene.swift; sourceTree = "<group>"; };
+		2AD294811DF20E4A00A959A1 /* SpecialScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SpecialScene.sks; sourceTree = "<group>"; };
+		2AD294831DF2151400A959A1 /* rocketFire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rocketFire.png; sourceTree = "<group>"; };
 		2ADE2B8C1DB5B566007DB2C0 /* alien.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alien.png; sourceTree = "<group>"; };
 		2ADE2B901DB5BEC1007DB2C0 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
 		2AE956341DDF75E500A8A5BF /* pause.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pause.jpg; sourceTree = "<group>"; };
@@ -144,10 +150,12 @@
 				2A04C6101DB93D9400989E11 /* EndScene.swift */,
 				2A4872C01DB17750005B9841 /* Actions.sks */,
 				2A65C8101DDF8BF300FD3ABE /* GameScene1.sks */,
+				2AD294811DF20E4A00A959A1 /* SpecialScene.sks */,
 				2A4872C91DB17750005B9841 /* Assets.xcassets */,
 				2A4872C21DB17750005B9841 /* GameScene.swift */,
 				2A65C80C1DDF86F200FD3ABE /* GameShop.swift */,
 				2A65C80A1DDF860500FD3ABE /* GameScene1.swift */,
+				2AD2947F1DF20E3800A959A1 /* SpecialScene.swift */,
 				2A4872C41DB17750005B9841 /* GameViewController.swift */,
 				2A4872C61DB17750005B9841 /* Main.storyboard */,
 			);
@@ -175,6 +183,7 @@
 		2ADE2B8B1DB5B4EC007DB2C0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2AD294831DF2151400A959A1 /* rocketFire.png */,
 				2A80029A1DCAF70A00C0FDF1 /* NewYork.mp3 */,
 				2ADE2B901DB5BEC1007DB2C0 /* bullet.png */,
 				2AE956341DDF75E500A8A5BF /* pause.jpg */,
@@ -332,7 +341,9 @@
 				2A04C60F1DB93A3F00989E11 /* rocket1.png in Resources */,
 				2A4872C11DB17750005B9841 /* Actions.sks in Resources */,
 				2A65C8111DDF8BF300FD3ABE /* GameScene1.sks in Resources */,
+				2AD294821DF20E4A00A959A1 /* SpecialScene.sks in Resources */,
 				2ADE2B8E1DB5B566007DB2C0 /* alien.png in Resources */,
+				2AD294841DF2151400A959A1 /* rocketFire.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +422,7 @@
 				2A04C6111DB93D9400989E11 /* EndScene.swift in Sources */,
 				2A65C80B1DDF860500FD3ABE /* GameScene1.swift in Sources */,
 				2A4872BD1DB17750005B9841 /* AppDelegate.swift in Sources */,
+				2AD294801DF20E3800A959A1 /* SpecialScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

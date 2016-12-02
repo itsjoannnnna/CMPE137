@@ -10,14 +10,14 @@ import Foundation
 import SpriteKit
 import GameplayKit
 
-struct PhysicsCategory{
+struct SpecialScenePhysicsCategory{
     static let Aliens: UInt32 = 1 //lets the last bit equal to 1
     static let Bullet: UInt32 = 2 // lets the last bits equal to 2
     static let Player: UInt32 = 3 //lets the last bits equal to 3
 }
 
-class GameScene1: SKScene, SKPhysicsContactDelegate {
-
+class SpecialScene: SKScene, SKPhysicsContactDelegate {
+    
     var HighScore = Int()
     var Score = Int()
     var Level = Int()
@@ -28,14 +28,11 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
     
     var pauseButton: SKSpriteNode?
     var playButton: SKSpriteNode?
-//    var pause = SKSpriteNode(imageNamed:"pause.jpg")
-//    var play = SKSpriteNode(imageNamed: "play.jpg")
     let backgroundMusic = SKAudioNode(fileNamed: "NewYork.mp3")
     
     var Player = SKSpriteNode(imageNamed: "rocket1.png")
     
     var ScoreLabel = UILabel()
-    var LevelLabel = UILabel()
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
@@ -59,11 +56,6 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         }
         
         physicsWorld.contactDelegate = self
-        
-        //play/pause button position
-//        play.position = CGPoint(x: 0, y:0)
-//        play.isHidden = true
-//        pause.position = CGPoint(x: 0, y:0)
         
         //background color for the playing field
         self.scene?.backgroundColor = UIColor.white
@@ -90,14 +82,6 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         ScoreLabel.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.3)
         ScoreLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
         self.view?.addSubview(ScoreLabel)
-
-        //adds the level to the screen
-        LevelLabel = UILabel(frame:CGRect(x: 200, y: 0, width: 300, height: 20))
-        LevelLabel.textColor = UIColor.red
-        LevelLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
-        LevelLabel.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.3)
-        LevelLabel.text = "Level \(Level)"
-        self.view?.addSubview(LevelLabel)
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -117,7 +101,6 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
             }
             updateLevelLabel()
             ScoreLabel.text = "Score: \(Score)"
-            LevelLabel.text = "Level: \(Level)"
         }
             
             //checks if the alien hit the players, or player hits an alien
@@ -135,12 +118,11 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
             secondBody.node?.removeFromParent()
             self.view?.presentScene(EndScene())
             ScoreLabel.removeFromSuperview()
-            LevelLabel.removeFromSuperview()
             playButton?.removeFromParent()
             pauseButton?.removeFromParent()
             
-//            play.removeFromParent()
-//            pause.removeFromParent()
+            //            play.removeFromParent()
+            //            pause.removeFromParent()
         }
     }
     
@@ -241,18 +223,18 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         //print(touchLocation)
         
         //play and pause
-//        let nodes = self.atPoint(touchLocation)
-//        if nodes.name == "pause"{
-//            let showPlayButtonAction = SKAction.run(showPlayButton)
-//            let pauseGameAction = SKAction.run(pauseGame)
-//            let pauseSequence = SKAction.sequence([showPlayButtonAction, pauseGameAction])
-//            run(pauseSequence)
-//            
-//        }
-//        else if nodes.name == "play"{
-//            self.resumeGame()
-//        }
-
+        //        let nodes = self.atPoint(touchLocation)
+        //        if nodes.name == "pause"{
+        //            let showPlayButtonAction = SKAction.run(showPlayButton)
+        //            let pauseGameAction = SKAction.run(pauseGame)
+        //            let pauseSequence = SKAction.sequence([showPlayButtonAction, pauseGameAction])
+        //            run(pauseSequence)
+        //
+        //        }
+        //        else if nodes.name == "play"{
+        //            self.resumeGame()
+        //        }
+        
         let nodes = self.atPoint(touchLocation)
         if nodes.name == "pauseButton" {
             let showPlayButtonAction = SKAction.run(showPlayButton)
@@ -282,17 +264,17 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
     }
     
     func resumeGame() {
-//        play.isHidden = true
-//        pause.isHidden = false
-//        self.view?.isPaused = false
+        //        play.isHidden = true
+        //        pause.isHidden = false
+        //        self.view?.isPaused = false
         playButton!.isHidden = true
         pauseButton!.isHidden = false
         self.view?.isPaused = false
     }
     
     func showPlayButton() {
-//        pause.isHidden = true
-//        play.isHidden = false
+        //        pause.isHidden = true
+        //        play.isHidden = false
         pauseButton!.isHidden = true
         playButton!.isHidden = false
     }
