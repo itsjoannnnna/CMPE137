@@ -5,6 +5,14 @@ class GameScene: SKScene {
     
     //Buttons on the HomeScene
     override func didMove(to view: SKView) {
+        self.scene?.backgroundColor = UIColor.black
+        
+        //Adding Stars
+        if let stars = SKEmitterNode(fileNamed: "movingStars") {
+            stars.position = CGPoint(x: frame.size.width / 2, y: frame.size.height)
+            stars.zPosition = -1
+            addChild(stars)
+        }
         
         let titleLabel = SKSpriteNode(imageNamed: "rocketFire.png")
         titleLabel.position = CGPoint(x: frame.midX, y: frame.midY+250)

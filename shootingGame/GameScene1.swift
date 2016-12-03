@@ -105,13 +105,13 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         LevelLabel.text = "Level \(Level)"
         self.view?.addSubview(LevelLabel)
         
-        //adds the money level to the screen
-        LevelLabel = UILabel(frame:CGRect(x: 200, y: 0, width: 300, height: 20))
-        LevelLabel.textColor = UIColor.red
-        LevelLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
-        LevelLabel.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.3)
-        LevelLabel.text = "Level \(Level)"
-        self.view?.addSubview(LevelLabel)
+        //adds the money amount to the screen
+        MoneyLabel = UILabel(frame:CGRect(x: 0, y: 715, width: 450, height: 20))
+        MoneyLabel.textColor = UIColor.red
+        MoneyLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
+        MoneyLabel.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.3)
+        MoneyLabel.text = "Money: \(Level)"
+        self.view?.addSubview(MoneyLabel)
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -235,19 +235,19 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
     
     //function where coins are falling from the sky
     func spawningCoins(){
-        let Money = SKSpriteNode(imageNamed: "money.gif")
+        let Money = SKSpriteNode(imageNamed: "money.png")
         let minValue = self.size.width/(-20)
         NSLog("Min: \(minValue)")
         let maxValue = self.size.width - 50
         NSLog("Max: \(maxValue)")
         
-        let spawnPoint = UInt32(maxValue - minValue)
-        Money.position = CGPoint(x: CGFloat(arc4random_uniform(spawnPoint)), y: self.size.height)
+        let newSpawnPoint = UInt32(maxValue - minValue)
+        Money.position = CGPoint(x: CGFloat(arc4random_uniform(newSpawnPoint)), y: self.size.height)
         
         //for the levels, we can decrease the duration to make it faster
         //Regular level
-        let fallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 10.0)
-        Money.run(SKAction.repeatForever(fallFromSky))
+        let MoneyFallFromSky = SKAction.moveTo(y: -self.frame.size.height, duration: 10.0)
+        Money.run(SKAction.repeatForever(MoneyFallFromSky))
         
         Money.physicsBody = SKPhysicsBody(rectangleOf: Money.size)
         Money.physicsBody?.categoryBitMask = PhysicsCategory.Aliens
@@ -256,7 +256,7 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         Money.physicsBody?.isDynamic = true
         
         let fallFromSkyDone = SKAction.removeFromParent()
-        Money.run(SKAction.sequence([fallFromSky, fallFromSkyDone]))
+        Money.run(SKAction.sequence([MoneyFallFromSky, fallFromSkyDone]))
         
         self.addChild(Money)
     }

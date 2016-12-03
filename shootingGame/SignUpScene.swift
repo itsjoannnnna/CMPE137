@@ -13,8 +13,15 @@ class SignUpScene : SKScene {
     var returnBtn :UIButton!
     
     override func didMove(to view: SKView) {
+        
+        //Adding Stars
+        if let stars = SKEmitterNode(fileNamed: "movingStars") {
+            stars.position = CGPoint(x: frame.size.width / 2, y: frame.size.height)
+            stars.zPosition = -1
+            addChild(stars)
+        }
         //Backgrount color
-        scene?.backgroundColor = UIColor.white
+        scene?.backgroundColor = UIColor.black
         
         let GameShopTitleLabel = SKSpriteNode(imageNamed: "signup1.png")
         GameShopTitleLabel.position = CGPoint(x: frame.midX, y: frame.midY+250)

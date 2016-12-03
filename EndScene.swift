@@ -21,7 +21,14 @@ class EndScene : SKScene {
     var HighScoreLabel : UILabel!
     
     override func didMove(to view: SKView) {
-        scene?.backgroundColor = UIColor.white
+        //Adding Stars
+        if let stars = SKEmitterNode(fileNamed: "movingStars") {
+            stars.position = CGPoint(x: frame.size.width / 2, y: frame.size.height)
+            stars.zPosition = -1
+            addChild(stars)
+        }
+        //Backgrount color
+        scene?.backgroundColor = UIColor.black
         
         GameOverLabel = UILabel(frame:CGRect(x: 40, y:0, width: view.frame.size.width/1.6, height: 30))
         GameOverLabel.textColor = UIColor.red
@@ -35,19 +42,11 @@ class EndScene : SKScene {
         gameOverLabel.position = CGPoint(x: frame.midX, y: frame.midY+250)
         addChild(gameOverLabel)
         
-//        restartBtn = UIButton (frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))
-//        restartBtn.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/2)
-//        
-//        restartBtn.setTitle("Restart", for: UIControlState.normal)
-//        restartBtn.setTitleColor(UIColor.darkGray, for: UIControlState.normal)
-//        restartBtn.addTarget(self, action: #selector(EndScene.Restart), for: UIControlEvents.touchUpInside)
-//        self.view!.addSubview(restartBtn)
-        
         homescreenBtn = UIButton (frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))
         homescreenBtn.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/3)
         
         homescreenBtn.setTitle("Homescreen", for: UIControlState.normal)
-        homescreenBtn.setTitleColor(UIColor.darkGray, for: UIControlState.normal)
+        homescreenBtn.setTitleColor(UIColor.white, for: UIControlState.normal)
         homescreenBtn.addTarget(self, action: #selector(EndScene.Homescreen), for: UIControlEvents.touchUpInside)
         self.view!.addSubview(homescreenBtn)
         
@@ -59,25 +58,16 @@ class EndScene : SKScene {
         
         ScoreLabel = UILabel(frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))
         ScoreLabel.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/1.2)
+        ScoreLabel.textColor = UIColor.white
         ScoreLabel.text = "Your score: \(Score)"
         self.view?.addSubview(ScoreLabel)
         
         HighScoreLabel = UILabel(frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))
         HighScoreLabel.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/1)
+        HighScoreLabel.textColor = UIColor.white
         HighScoreLabel.text = "Highscore: \(Highscore!)"
         self.view?.addSubview(HighScoreLabel)
     }
-    
-//    func Restart(){
-//        //Fixed restart issue, but rocket is zoomed in once first restart is pressed
-//        let scene = GameScene1(fileNamed: "GameScene1")
-//        self.view?.presentScene(scene)
-//        GameOverLabel.removeFromSuperview()
-//        homescreenBtn.removeFromSuperview()
-//        restartBtn.removeFromSuperview()
-//        HighScoreLabel.removeFromSuperview()
-//        ScoreLabel.removeFromSuperview()
-//    }
     
     func Homescreen(){
         let scene = GameScene(fileNamed: "GameScene")

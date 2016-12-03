@@ -15,7 +15,14 @@ class LoginScene : SKScene {
     
     override func didMove(to view: SKView) {
         //Backgrount color
-        scene?.backgroundColor = UIColor.white
+        //Adding Stars
+        if let stars = SKEmitterNode(fileNamed: "movingStars") {
+            stars.position = CGPoint(x: frame.size.width / 2, y: frame.size.height)
+            stars.zPosition = -1
+            addChild(stars)
+        }
+        //Backgrount color
+        scene?.backgroundColor = UIColor.black
         
         let GameShopTitleLabel = SKSpriteNode(imageNamed: "login1.png")
         GameShopTitleLabel.position = CGPoint(x: frame.midX, y: frame.midY+250)
