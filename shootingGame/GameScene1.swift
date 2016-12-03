@@ -124,7 +124,7 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
             firstBody.node?.removeFromParent()
             secondBody.node?.removeFromParent()
             Score+=1
-            if Score % 20 == 0{
+            if Score % 30 == 0{
                 timeIntervalForBullet = timeIntervalForBullet + 0.1
                 timeIntervalForAliens = timeIntervalForAliens - 0.1
                 timeIntervalForShootingAliens = timeIntervalForShootingAliens - 0.5
@@ -152,6 +152,7 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
             LevelLabel.removeFromSuperview()
             playButton?.removeFromParent()
             pauseButton?.removeFromParent()
+            MoneyLabel.removeFromSuperview()
             
 //            play.removeFromParent()
 //            pause.removeFromParent()
@@ -177,40 +178,40 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
     
     //updates the levels on the top of the playing field
     func updateLevelLabel(){
-        if(Score >= 0 && Score <= 20){
+        if(Score >= 0 && Score <= 30){
             Level = 1
         }
-        if(Score > 20 && Score <= 40){
+        if(Score > 30 && Score <= 60){
             Level = 2
         }
-        if(Score > 40 && Score <= 60){
+        if(Score > 60 && Score <= 90){
             Level = 3
         }
-        if(Score > 60 && Score <= 80){
+        if(Score > 90 && Score <= 120){
             Level = 4
         }
-        if(Score > 80 && Score <= 100){
+        if(Score > 120 && Score <= 150){
             Level = 5
         }
-        if(Score > 100 && Score <= 120){
+        if(Score > 150 && Score <= 180){
             Level = 6
         }
-        if(Score > 120 && Score <= 140){
+        if(Score > 180 && Score <= 210){
             Level = 7
         }
-        if(Score > 140 && Score <= 160){
+        if(Score > 210 && Score <= 240){
             Level = 8
         }
-        if(Score > 160 && Score <= 180){
+        if(Score > 240 && Score <= 270){
             Level = 9
         }
-        if(Score > 180 && Score <= 200){
+        if(Score > 270 && Score <= 300){
             Level = 10
         }
-        if(Score > 200 && Score <= 220){
+        if(Score > 300 && Score <= 330){
             Level = 11
         }
-        if(Score > 220 && Score <= 240){
+        if(Score > 330 && Score <= 360){
             Level = 12
         }
     }
