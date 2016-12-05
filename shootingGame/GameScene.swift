@@ -14,27 +14,27 @@ class GameScene: SKScene {
             addChild(stars)
         }
         
-        let titleLabel = SKSpriteNode(imageNamed: "rocketFire.png")
+        let titleLabel = SKSpriteNode(imageNamed: "title.png")
         titleLabel.position = CGPoint(x: frame.midX, y: frame.midY+250)
         addChild(titleLabel)
         
         //Start Game Button
-        let startGameButton = SKSpriteNode(imageNamed: "StartButton.png")
+        let startGameButton = SKSpriteNode(imageNamed: "StartButton1.png")
         startGameButton.position = CGPoint(x: frame.midX, y: frame.midY+100)
         startGameButton.name = "startgame"
         addChild(startGameButton)
         //Unlimited Game Button
-        let unlimitedGameButton = SKSpriteNode(imageNamed: "StartButton.png")
+        let unlimitedGameButton = SKSpriteNode(imageNamed: "special1.png")
         unlimitedGameButton.position = CGPoint(x: frame.midX, y: frame.midY)
         unlimitedGameButton.name = "unlimitedgame"
         addChild(unlimitedGameButton)
         //Game Shop Button
-        let gameShopButton = SKSpriteNode(imageNamed: "StartButton.png")
+        let gameShopButton = SKSpriteNode(imageNamed: "shopButton1.png")
         gameShopButton.position = CGPoint(x: frame.midX, y: frame.midY-100)
         gameShopButton.name = "gameshop"
         addChild(gameShopButton)
         //Login/SignUp Button
-        let loginSignButton = SKSpriteNode(imageNamed: "StartButton.png")
+        let loginSignButton = SKSpriteNode(imageNamed: "loginButton.png")
         loginSignButton.position = CGPoint(x: frame.midX, y: frame.midY-200)
         loginSignButton.name = "login"
         addChild(loginSignButton)

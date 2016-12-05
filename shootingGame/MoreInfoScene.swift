@@ -1,8 +1,8 @@
 //
-//  GameShop.swift
+//  MoreInfo.swift
 //  shootingGame
 //
-//  Created by Jo-Anna Marie Reyes on 11/18/16.
+//  Created by Jo-Anna Marie Reyes on 12/4/16.
 //  Copyright © 2016 Jo-Anna Marie Reyes. All rights reserved.
 //
 
@@ -11,6 +11,7 @@ import SpriteKit
 
 class MoreInfoScene: SKScene {
     var returnBtn : UIButton!
+    var moreInfoBtn : UIButton!
     
     override func didMove(to view: SKView) {
         //Backgrount color
@@ -20,7 +21,7 @@ class MoreInfoScene: SKScene {
             stars.zPosition = -1
             addChild(stars)
         }
-        //Backgrount color
+        //Background color
         scene?.backgroundColor = UIColor.black
         
         let GameShopTitleLabel = SKSpriteNode(imageNamed: "shop.png")
@@ -40,7 +41,7 @@ class MoreInfoScene: SKScene {
     //Return function to redirect scene to HomeScreen
     func Return(){
         //move to specified scene
-        let scene = GameShop(fileNamed: "GameShop")
+        let scene = GameScene(fileNamed: "GameScene")
         //starting transition between scenes
         self.view?.presentScene(scene)
         returnBtn.removeFromSuperview()

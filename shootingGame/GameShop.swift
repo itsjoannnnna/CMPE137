@@ -24,7 +24,7 @@ class GameShop: SKScene {
         //Backgrount color
         scene?.backgroundColor = UIColor.black
         
-        let GameShopTitleLabel = SKSpriteNode(imageNamed: "shop.png")
+        let GameShopTitleLabel = SKSpriteNode(imageNamed: "Shop.png")
         GameShopTitleLabel.position = CGPoint(x: frame.midX, y: frame.midY+250)
         addChild(GameShopTitleLabel)
         
@@ -39,18 +39,16 @@ class GameShop: SKScene {
         
         //3 Shooter Button
         let ThreeShooterPic = SKSpriteNode(imageNamed: "threeShooter.png")
-        ThreeShooterPic.position = CGPoint(x: frame.midX+15, y: frame.midY)
+        ThreeShooterPic.position = CGPoint(x: frame.midX+70, y: frame.midY)
         addChild(ThreeShooterPic)
-        
         //Return button for going back to HomeScreen
         moreInfoBtn = UIButton (frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))
-        moreInfoBtn.center = CGPoint(x: view.frame.midX, y: view.frame.midY-15)
+        moreInfoBtn.center = CGPoint(x: view.frame.midX, y: view.frame.midY)
         
         moreInfoBtn.setTitle("More Info", for: UIControlState.normal)
         moreInfoBtn.setTitleColor(UIColor.red, for: UIControlState.normal)
         moreInfoBtn.addTarget(self, action: #selector(GameShop.MoreInfo), for: UIControlEvents.touchUpInside)
         self.view!.addSubview(moreInfoBtn)
-
     }
     
     //Return function to redirect scene to HomeScreen
@@ -60,11 +58,11 @@ class GameShop: SKScene {
         //starting transition between scenes
         self.view?.presentScene(scene)
         returnBtn.removeFromSuperview()
+        moreInfoBtn.removeFromSuperview()
     }
+    
     func MoreInfo(){
-        //move to specified scene
         let scene = MoreInfoScene(fileNamed: "MoreInfoScene")
-        //starting transition between scenes
         self.view?.presentScene(scene)
         returnBtn.removeFromSuperview()
         moreInfoBtn.removeFromSuperview()

@@ -24,7 +24,7 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
     var Level = Int()
     var MoneyToSpend = Int()
     
-    //intervals for bullets, aliens, and the bullet
+    //intervals for bullets and aliens
     var timeIntervalForBullet : TimeInterval = 0.2
     var timeIntervalForAliens : TimeInterval = 0.1
     var timeIntervalForShootingAliens :TimeInterval = 8.0
@@ -58,7 +58,6 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
             stars.zPosition = -1
             addChild(stars)
         }
-
         
         playButton = childNode(withName: "playButton") as? SKSpriteNode
         playButton?.isHidden = true
@@ -230,7 +229,7 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
     func shootBullets(){
         let Bullet = SKSpriteNode(imageNamed: "new_bullet.png")
         Bullet.zPosition = -5
-        Bullet.position = CGPoint(x: Player.position.x, y: Player.position.y)
+        Bullet.position = CGPoint(x: Player.position.x+25, y: Player.position.y)
         
         let shooting = SKAction.moveTo(y: self.size.height + 30, duration: 1.0)
         let shootingDone = SKAction.removeFromParent()

@@ -24,7 +24,7 @@ class LoginScene : SKScene {
         //Backgrount color
         scene?.backgroundColor = UIColor.black
         
-        let GameShopTitleLabel = SKSpriteNode(imageNamed: "login1.png")
+        let GameShopTitleLabel = SKSpriteNode(imageNamed: "Login2.png")
         GameShopTitleLabel.position = CGPoint(x: frame.midX, y: frame.midY+250)
         addChild(GameShopTitleLabel)
         
