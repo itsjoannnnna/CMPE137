@@ -38,6 +38,14 @@ class SpecialScene: SKScene, SKPhysicsContactDelegate {
     private var spinnyNode : SKShapeNode?
     
     override func didMove(to view: SKView) {
+        self.scene?.backgroundColor = UIColor.black
+        
+        //Adding Stars
+        if let stars = SKEmitterNode(fileNamed: "movingStars") {
+            stars.position = CGPoint(x: frame.size.width / 2, y: frame.size.height)
+            stars.zPosition = -1
+            addChild(stars)
+        }
         
         //Background Music
         backgroundMusic.autoplayLooped = true
@@ -56,9 +64,6 @@ class SpecialScene: SKScene, SKPhysicsContactDelegate {
         }
         
         physicsWorld.contactDelegate = self
-        
-        //background color for the playing field
-        self.scene?.backgroundColor = UIColor.white
         
         //positioning of the player in the field. makes it stay at the bottom of the string
         Player.position = CGPoint(x: self.size.width/12, y: self.frame.size.height/7.5)
@@ -79,6 +84,7 @@ class SpecialScene: SKScene, SKPhysicsContactDelegate {
         //adds the score label to the top of the screen
         ScoreLabel.text = "\(Score)"
         ScoreLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
+        ScoreLabel.textColor = UIColor.red
         ScoreLabel.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.3)
         ScoreLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
         self.view?.addSubview(ScoreLabel)
@@ -168,7 +174,7 @@ class SpecialScene: SKScene, SKPhysicsContactDelegate {
     
     //function to shoot the bullets from behind the rocketship
     func shootBullets(){
-        let Bullet = SKSpriteNode(imageNamed: "bullet.png")
+        let Bullet = SKSpriteNode(imageNamed: "new_bullet.png")
         Bullet.zPosition = -5
         Bullet.position = CGPoint(x: Player.position.x, y: Player.position.y)
         

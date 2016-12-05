@@ -9,9 +9,8 @@
 import Foundation
 import SpriteKit
 
-class GameShop: SKScene {
+class MoreInfoScene: SKScene {
     var returnBtn : UIButton!
-    var moreInfoBtn : UIButton!
     
     override func didMove(to view: SKView) {
         //Backgrount color
@@ -34,40 +33,16 @@ class GameShop: SKScene {
         
         returnBtn.setTitle("Return", for: UIControlState.normal)
         returnBtn.setTitleColor(UIColor.red, for: UIControlState.normal)
-        returnBtn.addTarget(self, action: #selector(GameShop.Return), for: UIControlEvents.touchUpInside)
+        returnBtn.addTarget(self, action: #selector(MoreInfoScene.Return), for: UIControlEvents.touchUpInside)
         self.view!.addSubview(returnBtn)
-        
-        //3 Shooter Button
-        let ThreeShooterPic = SKSpriteNode(imageNamed: "threeShooter.png")
-        ThreeShooterPic.position = CGPoint(x: frame.midX+15, y: frame.midY)
-        addChild(ThreeShooterPic)
-        
-        //Return button for going back to HomeScreen
-        moreInfoBtn = UIButton (frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))
-        moreInfoBtn.center = CGPoint(x: view.frame.midX, y: view.frame.midY-15)
-        
-        moreInfoBtn.setTitle("More Info", for: UIControlState.normal)
-        moreInfoBtn.setTitleColor(UIColor.red, for: UIControlState.normal)
-        moreInfoBtn.addTarget(self, action: #selector(GameShop.MoreInfo), for: UIControlEvents.touchUpInside)
-        self.view!.addSubview(moreInfoBtn)
-
     }
     
     //Return function to redirect scene to HomeScreen
     func Return(){
         //move to specified scene
-        let scene = GameScene(fileNamed: "GameScene")
+        let scene = GameShop(fileNamed: "GameShop")
         //starting transition between scenes
         self.view?.presentScene(scene)
         returnBtn.removeFromSuperview()
     }
-    func MoreInfo(){
-        //move to specified scene
-        let scene = MoreInfoScene(fileNamed: "MoreInfoScene")
-        //starting transition between scenes
-        self.view?.presentScene(scene)
-        returnBtn.removeFromSuperview()
-        moreInfoBtn.removeFromSuperview()
-    }
-
 }

@@ -21,14 +21,14 @@ class EndScene : SKScene {
     var HighScoreLabel : UILabel!
     
     override func didMove(to view: SKView) {
+        self.scene?.backgroundColor = UIColor.black
+        
         //Adding Stars
         if let stars = SKEmitterNode(fileNamed: "movingStars") {
             stars.position = CGPoint(x: frame.size.width / 2, y: frame.size.height)
             stars.zPosition = -1
             addChild(stars)
         }
-        //Backgrount color
-        scene?.backgroundColor = UIColor.black
         
         GameOverLabel = UILabel(frame:CGRect(x: 40, y:0, width: view.frame.size.width/1.6, height: 30))
         GameOverLabel.textColor = UIColor.red
@@ -36,7 +36,6 @@ class EndScene : SKScene {
         GameOverLabel.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/5)
         GameOverLabel.text = "Game Over!"
         self.view?.addSubview(GameOverLabel)
-        
         
         let gameOverLabel = SKSpriteNode(imageNamed: "gameover.png")
         gameOverLabel.position = CGPoint(x: frame.midX, y: frame.midY+250)
@@ -58,13 +57,13 @@ class EndScene : SKScene {
         
         ScoreLabel = UILabel(frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))
         ScoreLabel.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/1.2)
-        ScoreLabel.textColor = UIColor.white
+        ScoreLabel.textColor = UIColor.red
         ScoreLabel.text = "Your score: \(Score)"
         self.view?.addSubview(ScoreLabel)
         
         HighScoreLabel = UILabel(frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))
         HighScoreLabel.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/1)
-        HighScoreLabel.textColor = UIColor.white
+        HighScoreLabel.textColor = UIColor.red
         HighScoreLabel.text = "Highscore: \(Highscore!)"
         self.view?.addSubview(HighScoreLabel)
     }

@@ -24,6 +24,7 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
     var Level = Int()
     var MoneyToSpend = Int()
     
+    //intervals for bullets, aliens, and the bullet
     var timeIntervalForBullet : TimeInterval = 0.2
     var timeIntervalForAliens : TimeInterval = 0.1
     var timeIntervalForShootingAliens :TimeInterval = 8.0
@@ -49,6 +50,16 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         backgroundMusic.autoplayLooped = true
         addChild(backgroundMusic)
         
+        self.scene?.backgroundColor = UIColor.black
+        
+        //Adding Stars
+        if let stars = SKEmitterNode(fileNamed: "movingStars") {
+            stars.position = CGPoint(x: frame.size.width / 2, y: frame.size.height)
+            stars.zPosition = -1
+            addChild(stars)
+        }
+
+        
         playButton = childNode(withName: "playButton") as? SKSpriteNode
         playButton?.isHidden = true
         pauseButton = childNode(withName: "pauseButton") as? SKSpriteNode
@@ -68,8 +79,6 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
 //        play.isHidden = true
 //        pause.position = CGPoint(x: 0, y:0)
         
-        //background color for the playing field
-        self.scene?.backgroundColor = UIColor.white
         
         //positioning of the player in the field. makes it stay at the bottom of the string
         Player.position = CGPoint(x: self.size.width/12, y: self.frame.size.height/7.5)
@@ -93,6 +102,7 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         //adds the score label to the top of the screen
         ScoreLabel.text = "\(Score)"
         ScoreLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
+        ScoreLabel.textColor = UIColor.red
         ScoreLabel.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.3)
         ScoreLabel.font = UIFont.boldSystemFont(ofSize: 20.0)
         self.view?.addSubview(ScoreLabel)
@@ -133,6 +143,23 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
             ScoreLabel.text = "Score: \(Score)"
             LevelLabel.text = "Level: \(Level)"
         }
+            //checks if the coins hit the player
+        if((firstBody.categoryBitMask == PhysicsCategory.Bullet && secondBody.categoryBitMask == PhysicsCategory.Money) || (firstBody.categoryBitMask == PhysicsCategory.Money && secondBody.categoryBitMask == PhysicsCategory.Bullet)){
+            
+            firstBody.node?.removeFromParent()
+            secondBody.node?.removeFromParent()
+            Score+=5
+            MoneyToSpend+=1
+            if Score % 20 == 0{
+                timeIntervalForBullet = timeIntervalForBullet + 0.1
+                timeIntervalForAliens = timeIntervalForAliens - 0.1
+                timeIntervalForShootingAliens = timeIntervalForShootingAliens - 0.5
+            }
+            updateLevelLabel()
+            ScoreLabel.text = "Score: \(Score)"
+            LevelLabel.text = "Level: \(Level)"
+            MoneyLabel.text = "Money: \(MoneyToSpend)"
+        }
             
             //checks if the alien hit the players, or player hits an alien
         else if((firstBody.categoryBitMask == PhysicsCategory.Aliens && secondBody.categoryBitMask == PhysicsCategory.Player) || (firstBody.categoryBitMask == PhysicsCategory.Player && secondBody.categoryBitMask == PhysicsCategory.Aliens)){
@@ -156,23 +183,6 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
             
 //            play.removeFromParent()
 //            pause.removeFromParent()
-        }
-            //checks if the coins hit the player
-        else if((firstBody.categoryBitMask == PhysicsCategory.Player && secondBody.categoryBitMask == PhysicsCategory.Money) || (firstBody.categoryBitMask == PhysicsCategory.Money && secondBody.categoryBitMask == PhysicsCategory.Player)){
-            
-            firstBody.node?.removeFromParent()
-            secondBody.node?.removeFromParent()
-            Score+=5
-            MoneyToSpend+=1
-            if Score % 20 == 0{
-                timeIntervalForBullet = timeIntervalForBullet + 0.1
-                timeIntervalForAliens = timeIntervalForAliens - 0.1
-                timeIntervalForShootingAliens = timeIntervalForShootingAliens - 0.5
-            }
-            updateLevelLabel()
-            ScoreLabel.text = "Score: \(Score)"
-            LevelLabel.text = "Level: \(Level)"
-            MoneyLabel.text = "Money: \(MoneyToSpend)"
         }
     }
     
@@ -218,7 +228,7 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
     
     //function to shoot the bullets from behind the rocketship
     func shootBullets(){
-        let Bullet = SKSpriteNode(imageNamed: "bullet.png")
+        let Bullet = SKSpriteNode(imageNamed: "new_bullet.png")
         Bullet.zPosition = -5
         Bullet.position = CGPoint(x: Player.position.x, y: Player.position.y)
         
@@ -229,6 +239,7 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         Bullet.physicsBody = SKPhysicsBody(rectangleOf: Bullet.size)
         Bullet.physicsBody?.categoryBitMask = PhysicsCategory.Bullet
         Bullet.physicsBody?.contactTestBitMask = PhysicsCategory.Aliens
+        Bullet.physicsBody?.contactTestBitMask = PhysicsCategory.Money
         Bullet.physicsBody?.affectedByGravity = false
         Bullet.physicsBody?.isDynamic = false
         self.addChild(Bullet)
@@ -236,7 +247,7 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
     
     //function where coins are falling from the sky
     func spawningCoins(){
-        let Money = SKSpriteNode(imageNamed: "money.png")
+        let Money = SKSpriteNode(imageNamed: "money1.png")
         let minValue = self.size.width/(-20)
         NSLog("Min: \(minValue)")
         let maxValue = self.size.width - 50
@@ -251,8 +262,9 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         Money.run(SKAction.repeatForever(MoneyFallFromSky))
         
         Money.physicsBody = SKPhysicsBody(rectangleOf: Money.size)
-        Money.physicsBody?.categoryBitMask = PhysicsCategory.Aliens
+        Money.physicsBody?.categoryBitMask = PhysicsCategory.Money
         Money.physicsBody?.contactTestBitMask = PhysicsCategory.Bullet
+        Money.physicsBody?.contactTestBitMask = PhysicsCategory.Aliens
         Money.physicsBody?.affectedByGravity = false
         Money.physicsBody?.isDynamic = true
         
