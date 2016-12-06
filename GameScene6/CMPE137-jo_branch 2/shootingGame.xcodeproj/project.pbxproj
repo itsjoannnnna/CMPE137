@@ -1,0 +1,761 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2A04C60F1DB93A3F00989E11 /* rocket1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A04C60E1DB93A3F00989E11 /* rocket1.png */; };
+		2A04C6111DB93D9400989E11 /* EndScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A04C6101DB93D9400989E11 /* EndScene.swift */; };
+		2A0D86C81DCA926100EE3AA1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A0D86C71DCA926100EE3AA1 /* GoogleService-Info.plist */; };
+		2A4872BD1DB17750005B9841 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4872BC1DB17750005B9841 /* AppDelegate.swift */; };
+		2A4872BF1DB17750005B9841 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2A4872BE1DB17750005B9841 /* GameScene.sks */; };
+		2A4872C11DB17750005B9841 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2A4872C01DB17750005B9841 /* Actions.sks */; };
+		2A4872C31DB17750005B9841 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4872C21DB17750005B9841 /* GameScene.swift */; };
+		2A4872C51DB17750005B9841 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4872C41DB17750005B9841 /* GameViewController.swift */; };
+		2A4872C81DB17750005B9841 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A4872C61DB17750005B9841 /* Main.storyboard */; };
+		2A4872CA1DB17750005B9841 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A4872C91DB17750005B9841 /* Assets.xcassets */; };
+		2A4872CD1DB17750005B9841 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2A4872CB1DB17750005B9841 /* LaunchScreen.storyboard */; };
+		2A4872D81DB17750005B9841 /* shootingGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4872D71DB17750005B9841 /* shootingGameTests.swift */; };
+		2A4872E31DB17750005B9841 /* shootingGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A4872E21DB17750005B9841 /* shootingGameUITests.swift */; };
+		2A65C80B1DDF860500FD3ABE /* GameScene1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A65C80A1DDF860500FD3ABE /* GameScene1.swift */; };
+		2A65C80D1DDF86F200FD3ABE /* GameShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A65C80C1DDF86F200FD3ABE /* GameShop.swift */; };
+		2A80029B1DCAF70B00C0FDF1 /* NewYork.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2A80029A1DCAF70A00C0FDF1 /* NewYork.mp3 */; };
+		2AAB96F31DF758080099AA5A /* alienboss.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AAB96F21DF758080099AA5A /* alienboss.png */; };
+		2ADE2B8E1DB5B566007DB2C0 /* alien.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ADE2B8C1DB5B566007DB2C0 /* alien.png */; };
+		2ADE2B911DB5BEC1007DB2C0 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ADE2B901DB5BEC1007DB2C0 /* bullet.png */; };
+		2AE956361DDF75E500A8A5BF /* pause.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2AE956341DDF75E500A8A5BF /* pause.jpg */; };
+		2AE956371DDF75E500A8A5BF /* play.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2AE956351DDF75E500A8A5BF /* play.jpg */; };
+		3F37FC971DEF93F800AA5CFD /* InvaderA_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37FC961DEF93F800AA5CFD /* InvaderA_00.png */; };
+		3F37FC991DEF93FF00AA5CFD /* InvaderA_00@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37FC981DEF93FF00AA5CFD /* InvaderA_00@2x.png */; };
+		3F37FC9B1DEF940600AA5CFD /* InvaderA_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37FC9A1DEF940600AA5CFD /* InvaderA_01.png */; };
+		3F37FC9D1DEF940F00AA5CFD /* InvaderA_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37FC9C1DEF940F00AA5CFD /* InvaderA_01@2x.png */; };
+		3F37FC9F1DEF941500AA5CFD /* InvaderB_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37FC9E1DEF941500AA5CFD /* InvaderB_00.png */; };
+		3F37FCA11DEF941B00AA5CFD /* InvaderB_00@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37FCA01DEF941B00AA5CFD /* InvaderB_00@2x.png */; };
+		3F37FCA31DEF942300AA5CFD /* InvaderB_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37FCA21DEF942300AA5CFD /* InvaderB_01.png */; };
+		3F37FCA51DEF942D00AA5CFD /* InvaderB_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37FCA41DEF942D00AA5CFD /* InvaderB_01@2x.png */; };
+		3F37FCA71DEF943400AA5CFD /* InvaderC_00.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37FCA61DEF943400AA5CFD /* InvaderC_00.png */; };
+		3F37FCA91DEF943A00AA5CFD /* InvaderC_00@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37FCA81DEF943A00AA5CFD /* InvaderC_00@2x.png */; };
+		3F37FCAB1DEF943F00AA5CFD /* Ship.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37FCAA1DEF943F00AA5CFD /* Ship.png */; };
+		3F37FCAD1DEF944400AA5CFD /* Ship@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37FCAC1DEF944400AA5CFD /* Ship@2x.png */; };
+		3F37FCAF1DEF947700AA5CFD /* InvaderC_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37FCAE1DEF947700AA5CFD /* InvaderC_01.png */; };
+		3F37FCB11DEF947E00AA5CFD /* InvaderC_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F37FCB01DEF947E00AA5CFD /* InvaderC_01@2x.png */; };
+		3F3E62751DDF8AB700964BB4 /* StartButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F3E62741DDF8AB700964BB4 /* StartButton.png */; };
+		3F3E62771DDF8CF500964BB4 /* GameScene1.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3F3E62761DDF8CF500964BB4 /* GameScene1.sks */; };
+		3F3E62791DDF902D00964BB4 /* GameScene6.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3E62781DDF902D00964BB4 /* GameScene6.swift */; };
+		3F3E627B1DDF904D00964BB4 /* GameScene6.sks in Resources */ = {isa = PBXBuildFile; fileRef = 3F3E627A1DDF904D00964BB4 /* GameScene6.sks */; };
+		839C56D81102199F08A8591C /* libPods-shootingGame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEB1557FF359647F381637E /* libPods-shootingGame.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2A4872D41DB17750005B9841 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A4872B11DB1774F005B9841 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A4872B81DB1774F005B9841;
+			remoteInfo = shootingGame;
+		};
+		2A4872DF1DB17750005B9841 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2A4872B11DB1774F005B9841 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2A4872B81DB1774F005B9841;
+			remoteInfo = shootingGame;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		03594C1912F4144AA8AF9986 /* Pods-shootingGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shootingGame.debug.xcconfig"; path = "Pods/Target Support Files/Pods-shootingGame/Pods-shootingGame.debug.xcconfig"; sourceTree = "<group>"; };
+		2A04C60E1DB93A3F00989E11 /* rocket1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rocket1.png; sourceTree = "<group>"; };
+		2A04C6101DB93D9400989E11 /* EndScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EndScene.swift; path = ../EndScene.swift; sourceTree = "<group>"; };
+		2A0D86C71DCA926100EE3AA1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2A4872B91DB17750005B9841 /* shootingGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shootingGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A4872BC1DB17750005B9841 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2A4872BE1DB17750005B9841 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		2A4872C01DB17750005B9841 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		2A4872C21DB17750005B9841 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		2A4872C41DB17750005B9841 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		2A4872C71DB17750005B9841 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2A4872C91DB17750005B9841 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2A4872CC1DB17750005B9841 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2A4872CE1DB17750005B9841 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A4872D31DB17750005B9841 /* shootingGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = shootingGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A4872D71DB17750005B9841 /* shootingGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shootingGameTests.swift; sourceTree = "<group>"; };
+		2A4872D91DB17750005B9841 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A4872DE1DB17750005B9841 /* shootingGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = shootingGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A4872E21DB17750005B9841 /* shootingGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shootingGameUITests.swift; sourceTree = "<group>"; };
+		2A4872E41DB17750005B9841 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2A65C80A1DDF860500FD3ABE /* GameScene1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene1.swift; sourceTree = "<group>"; };
+		2A65C80C1DDF86F200FD3ABE /* GameShop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameShop.swift; sourceTree = "<group>"; };
+		2A80029A1DCAF70A00C0FDF1 /* NewYork.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NewYork.mp3; sourceTree = "<group>"; };
+		2AAB96F21DF758080099AA5A /* alienboss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alienboss.png; sourceTree = "<group>"; };
+		2ADE2B8C1DB5B566007DB2C0 /* alien.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alien.png; sourceTree = "<group>"; };
+		2ADE2B901DB5BEC1007DB2C0 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
+		2AE956341DDF75E500A8A5BF /* pause.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pause.jpg; sourceTree = "<group>"; };
+		2AE956351DDF75E500A8A5BF /* play.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = play.jpg; sourceTree = "<group>"; };
+		3F37FC961DEF93F800AA5CFD /* InvaderA_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InvaderA_00.png; sourceTree = "<group>"; };
+		3F37FC981DEF93FF00AA5CFD /* InvaderA_00@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InvaderA_00@2x.png"; sourceTree = "<group>"; };
+		3F37FC9A1DEF940600AA5CFD /* InvaderA_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InvaderA_01.png; sourceTree = "<group>"; };
+		3F37FC9C1DEF940F00AA5CFD /* InvaderA_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InvaderA_01@2x.png"; sourceTree = "<group>"; };
+		3F37FC9E1DEF941500AA5CFD /* InvaderB_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InvaderB_00.png; sourceTree = "<group>"; };
+		3F37FCA01DEF941B00AA5CFD /* InvaderB_00@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InvaderB_00@2x.png"; sourceTree = "<group>"; };
+		3F37FCA21DEF942300AA5CFD /* InvaderB_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InvaderB_01.png; sourceTree = "<group>"; };
+		3F37FCA41DEF942D00AA5CFD /* InvaderB_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InvaderB_01@2x.png"; sourceTree = "<group>"; };
+		3F37FCA61DEF943400AA5CFD /* InvaderC_00.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InvaderC_00.png; sourceTree = "<group>"; };
+		3F37FCA81DEF943A00AA5CFD /* InvaderC_00@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InvaderC_00@2x.png"; sourceTree = "<group>"; };
+		3F37FCAA1DEF943F00AA5CFD /* Ship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ship.png; sourceTree = "<group>"; };
+		3F37FCAC1DEF944400AA5CFD /* Ship@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ship@2x.png"; sourceTree = "<group>"; };
+		3F37FCAE1DEF947700AA5CFD /* InvaderC_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InvaderC_01.png; sourceTree = "<group>"; };
+		3F37FCB01DEF947E00AA5CFD /* InvaderC_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "InvaderC_01@2x.png"; sourceTree = "<group>"; };
+		3F3E62741DDF8AB700964BB4 /* StartButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StartButton.png; sourceTree = "<group>"; };
+		3F3E62761DDF8CF500964BB4 /* GameScene1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene1.sks; sourceTree = "<group>"; };
+		3F3E62781DDF902D00964BB4 /* GameScene6.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene6.swift; sourceTree = "<group>"; };
+		3F3E627A1DDF904D00964BB4 /* GameScene6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene6.sks; sourceTree = "<group>"; };
+		BFEB1557FF359647F381637E /* libPods-shootingGame.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-shootingGame.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE60A89633158003D4C065FF /* Pods-shootingGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shootingGame.release.xcconfig"; path = "Pods/Target Support Files/Pods-shootingGame/Pods-shootingGame.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2A4872B61DB1774F005B9841 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				839C56D81102199F08A8591C /* libPods-shootingGame.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A4872D01DB17750005B9841 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A4872DB1DB17750005B9841 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2A4872B01DB1774F005B9841 = {
+			isa = PBXGroup;
+			children = (
+				2A4872BB1DB17750005B9841 /* shootingGame */,
+				2A4872D61DB17750005B9841 /* shootingGameTests */,
+				2A4872E11DB17750005B9841 /* shootingGameUITests */,
+				2A4872BA1DB17750005B9841 /* Products */,
+				73A1A099ECD46A1EC7DF45D7 /* Pods */,
+				4CDF89EA51D80C0E1775B79D /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		2A4872BA1DB17750005B9841 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2A4872B91DB17750005B9841 /* shootingGame.app */,
+				2A4872D31DB17750005B9841 /* shootingGameTests.xctest */,
+				2A4872DE1DB17750005B9841 /* shootingGameUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2A4872BB1DB17750005B9841 /* shootingGame */ = {
+			isa = PBXGroup;
+			children = (
+				3F37FC951DEF93AF00AA5CFD /* Space Invader */,
+				2ADE2B8B1DB5B4EC007DB2C0 /* Supporting Files */,
+				2A4872BC1DB17750005B9841 /* AppDelegate.swift */,
+				2A0D86C71DCA926100EE3AA1 /* GoogleService-Info.plist */,
+				2A4872BE1DB17750005B9841 /* GameScene.sks */,
+				2A04C6101DB93D9400989E11 /* EndScene.swift */,
+				2A4872C01DB17750005B9841 /* Actions.sks */,
+				2A4872C91DB17750005B9841 /* Assets.xcassets */,
+				2A4872C21DB17750005B9841 /* GameScene.swift */,
+				3F3E62781DDF902D00964BB4 /* GameScene6.swift */,
+				2A65C80C1DDF86F200FD3ABE /* GameShop.swift */,
+				3F3E62761DDF8CF500964BB4 /* GameScene1.sks */,
+				2A65C80A1DDF860500FD3ABE /* GameScene1.swift */,
+				3F3E627A1DDF904D00964BB4 /* GameScene6.sks */,
+				2A4872C41DB17750005B9841 /* GameViewController.swift */,
+				2A4872C61DB17750005B9841 /* Main.storyboard */,
+			);
+			path = shootingGame;
+			sourceTree = "<group>";
+		};
+		2A4872D61DB17750005B9841 /* shootingGameTests */ = {
+			isa = PBXGroup;
+			children = (
+				2A4872D71DB17750005B9841 /* shootingGameTests.swift */,
+				2A4872D91DB17750005B9841 /* Info.plist */,
+			);
+			path = shootingGameTests;
+			sourceTree = "<group>";
+		};
+		2A4872E11DB17750005B9841 /* shootingGameUITests */ = {
+			isa = PBXGroup;
+			children = (
+				2A4872E21DB17750005B9841 /* shootingGameUITests.swift */,
+				2A4872E41DB17750005B9841 /* Info.plist */,
+			);
+			path = shootingGameUITests;
+			sourceTree = "<group>";
+		};
+		2ADE2B8B1DB5B4EC007DB2C0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2A80029A1DCAF70A00C0FDF1 /* NewYork.mp3 */,
+				2ADE2B901DB5BEC1007DB2C0 /* bullet.png */,
+				2AE956341DDF75E500A8A5BF /* pause.jpg */,
+				2AAB96F21DF758080099AA5A /* alienboss.png */,
+				3F3E62741DDF8AB700964BB4 /* StartButton.png */,
+				2AE956351DDF75E500A8A5BF /* play.jpg */,
+				2A4872CB1DB17750005B9841 /* LaunchScreen.storyboard */,
+				2A04C60E1DB93A3F00989E11 /* rocket1.png */,
+				2ADE2B8C1DB5B566007DB2C0 /* alien.png */,
+				2A4872CE1DB17750005B9841 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3F37FC951DEF93AF00AA5CFD /* Space Invader */ = {
+			isa = PBXGroup;
+			children = (
+				3F37FC961DEF93F800AA5CFD /* InvaderA_00.png */,
+				3F37FC981DEF93FF00AA5CFD /* InvaderA_00@2x.png */,
+				3F37FC9A1DEF940600AA5CFD /* InvaderA_01.png */,
+				3F37FC9C1DEF940F00AA5CFD /* InvaderA_01@2x.png */,
+				3F37FC9E1DEF941500AA5CFD /* InvaderB_00.png */,
+				3F37FCA01DEF941B00AA5CFD /* InvaderB_00@2x.png */,
+				3F37FCA21DEF942300AA5CFD /* InvaderB_01.png */,
+				3F37FCA41DEF942D00AA5CFD /* InvaderB_01@2x.png */,
+				3F37FCA61DEF943400AA5CFD /* InvaderC_00.png */,
+				3F37FCA81DEF943A00AA5CFD /* InvaderC_00@2x.png */,
+				3F37FCAE1DEF947700AA5CFD /* InvaderC_01.png */,
+				3F37FCB01DEF947E00AA5CFD /* InvaderC_01@2x.png */,
+				3F37FCAA1DEF943F00AA5CFD /* Ship.png */,
+				3F37FCAC1DEF944400AA5CFD /* Ship@2x.png */,
+			);
+			name = "Space Invader";
+			sourceTree = "<group>";
+		};
+		4CDF89EA51D80C0E1775B79D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BFEB1557FF359647F381637E /* libPods-shootingGame.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		73A1A099ECD46A1EC7DF45D7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				03594C1912F4144AA8AF9986 /* Pods-shootingGame.debug.xcconfig */,
+				EE60A89633158003D4C065FF /* Pods-shootingGame.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2A4872B81DB1774F005B9841 /* shootingGame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A4872E71DB17750005B9841 /* Build configuration list for PBXNativeTarget "shootingGame" */;
+			buildPhases = (
+				3A93E4355AEF37D5B6E50561 /* [CP] Check Pods Manifest.lock */,
+				2A4872B51DB1774F005B9841 /* Sources */,
+				2A4872B61DB1774F005B9841 /* Frameworks */,
+				2A4872B71DB1774F005B9841 /* Resources */,
+				D4CF017F0B077BD51A5FDA8B /* [CP] Embed Pods Frameworks */,
+				65B3A1572C2336964D9F7C54 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = shootingGame;
+			productName = shootingGame;
+			productReference = 2A4872B91DB17750005B9841 /* shootingGame.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2A4872D21DB17750005B9841 /* shootingGameTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A4872EA1DB17750005B9841 /* Build configuration list for PBXNativeTarget "shootingGameTests" */;
+			buildPhases = (
+				2A4872CF1DB17750005B9841 /* Sources */,
+				2A4872D01DB17750005B9841 /* Frameworks */,
+				2A4872D11DB17750005B9841 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A4872D51DB17750005B9841 /* PBXTargetDependency */,
+			);
+			name = shootingGameTests;
+			productName = shootingGameTests;
+			productReference = 2A4872D31DB17750005B9841 /* shootingGameTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		2A4872DD1DB17750005B9841 /* shootingGameUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2A4872ED1DB17750005B9841 /* Build configuration list for PBXNativeTarget "shootingGameUITests" */;
+			buildPhases = (
+				2A4872DA1DB17750005B9841 /* Sources */,
+				2A4872DB1DB17750005B9841 /* Frameworks */,
+				2A4872DC1DB17750005B9841 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2A4872E01DB17750005B9841 /* PBXTargetDependency */,
+			);
+			name = shootingGameUITests;
+			productName = shootingGameUITests;
+			productReference = 2A4872DE1DB17750005B9841 /* shootingGameUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2A4872B11DB1774F005B9841 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "Jo-Anna Marie Reyes";
+				TargetAttributes = {
+					2A4872B81DB1774F005B9841 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = XU9ZPKTAZL;
+						ProvisioningStyle = Automatic;
+					};
+					2A4872D21DB17750005B9841 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = XU9ZPKTAZL;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2A4872B81DB1774F005B9841;
+					};
+					2A4872DD1DB17750005B9841 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = XU9ZPKTAZL;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 2A4872B81DB1774F005B9841;
+					};
+				};
+			};
+			buildConfigurationList = 2A4872B41DB1774F005B9841 /* Build configuration list for PBXProject "shootingGame" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2A4872B01DB1774F005B9841;
+			productRefGroup = 2A4872BA1DB17750005B9841 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2A4872B81DB1774F005B9841 /* shootingGame */,
+				2A4872D21DB17750005B9841 /* shootingGameTests */,
+				2A4872DD1DB17750005B9841 /* shootingGameUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2A4872B71DB1774F005B9841 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A80029B1DCAF70B00C0FDF1 /* NewYork.mp3 in Resources */,
+				2AE956371DDF75E500A8A5BF /* play.jpg in Resources */,
+				2A4872C81DB17750005B9841 /* Main.storyboard in Resources */,
+				2A4872BF1DB17750005B9841 /* GameScene.sks in Resources */,
+				2A0D86C81DCA926100EE3AA1 /* GoogleService-Info.plist in Resources */,
+				3F37FC9D1DEF940F00AA5CFD /* InvaderA_01@2x.png in Resources */,
+				2AE956361DDF75E500A8A5BF /* pause.jpg in Resources */,
+				3F37FCA11DEF941B00AA5CFD /* InvaderB_00@2x.png in Resources */,
+				2A4872CA1DB17750005B9841 /* Assets.xcassets in Resources */,
+				3F37FCAB1DEF943F00AA5CFD /* Ship.png in Resources */,
+				3F3E627B1DDF904D00964BB4 /* GameScene6.sks in Resources */,
+				3F37FCA51DEF942D00AA5CFD /* InvaderB_01@2x.png in Resources */,
+				2AAB96F31DF758080099AA5A /* alienboss.png in Resources */,
+				2A4872CD1DB17750005B9841 /* LaunchScreen.storyboard in Resources */,
+				3F3E62751DDF8AB700964BB4 /* StartButton.png in Resources */,
+				3F37FCAD1DEF944400AA5CFD /* Ship@2x.png in Resources */,
+				3F37FCA71DEF943400AA5CFD /* InvaderC_00.png in Resources */,
+				2ADE2B911DB5BEC1007DB2C0 /* bullet.png in Resources */,
+				3F37FC9F1DEF941500AA5CFD /* InvaderB_00.png in Resources */,
+				3F37FCAF1DEF947700AA5CFD /* InvaderC_01.png in Resources */,
+				3F37FC971DEF93F800AA5CFD /* InvaderA_00.png in Resources */,
+				3F37FCA31DEF942300AA5CFD /* InvaderB_01.png in Resources */,
+				2A04C60F1DB93A3F00989E11 /* rocket1.png in Resources */,
+				2A4872C11DB17750005B9841 /* Actions.sks in Resources */,
+				3F37FC9B1DEF940600AA5CFD /* InvaderA_01.png in Resources */,
+				3F37FC991DEF93FF00AA5CFD /* InvaderA_00@2x.png in Resources */,
+				3F3E62771DDF8CF500964BB4 /* GameScene1.sks in Resources */,
+				3F37FCA91DEF943A00AA5CFD /* InvaderC_00@2x.png in Resources */,
+				2ADE2B8E1DB5B566007DB2C0 /* alien.png in Resources */,
+				3F37FCB11DEF947E00AA5CFD /* InvaderC_01@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A4872D11DB17750005B9841 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A4872DC1DB17750005B9841 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3A93E4355AEF37D5B6E50561 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		65B3A1572C2336964D9F7C54 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-shootingGame/Pods-shootingGame-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4CF017F0B077BD51A5FDA8B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-shootingGame/Pods-shootingGame-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2A4872B51DB1774F005B9841 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A4872C31DB17750005B9841 /* GameScene.swift in Sources */,
+				2A4872C51DB17750005B9841 /* GameViewController.swift in Sources */,
+				2A65C80D1DDF86F200FD3ABE /* GameShop.swift in Sources */,
+				2A04C6111DB93D9400989E11 /* EndScene.swift in Sources */,
+				2A65C80B1DDF860500FD3ABE /* GameScene1.swift in Sources */,
+				3F3E62791DDF902D00964BB4 /* GameScene6.swift in Sources */,
+				2A4872BD1DB17750005B9841 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A4872CF1DB17750005B9841 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A4872D81DB17750005B9841 /* shootingGameTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2A4872DA1DB17750005B9841 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A4872E31DB17750005B9841 /* shootingGameUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2A4872D51DB17750005B9841 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A4872B81DB1774F005B9841 /* shootingGame */;
+			targetProxy = 2A4872D41DB17750005B9841 /* PBXContainerItemProxy */;
+		};
+		2A4872E01DB17750005B9841 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2A4872B81DB1774F005B9841 /* shootingGame */;
+			targetProxy = 2A4872DF1DB17750005B9841 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2A4872C61DB17750005B9841 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A4872C71DB17750005B9841 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2A4872CB1DB17750005B9841 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2A4872CC1DB17750005B9841 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2A4872E51DB17750005B9841 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2A4872E61DB17750005B9841 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2A4872E81DB17750005B9841 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 03594C1912F4144AA8AF9986 /* Pods-shootingGame.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = XU9ZPKTAZL;
+				INFOPLIST_FILE = shootingGame/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = joanna.shootingGame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		2A4872E91DB17750005B9841 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE60A89633158003D4C065FF /* Pods-shootingGame.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = XU9ZPKTAZL;
+				INFOPLIST_FILE = shootingGame/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = joanna.shootingGame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		2A4872EB1DB17750005B9841 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = XU9ZPKTAZL;
+				INFOPLIST_FILE = shootingGameTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = joanna.shootingGameTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/shootingGame.app/shootingGame";
+			};
+			name = Debug;
+		};
+		2A4872EC1DB17750005B9841 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = XU9ZPKTAZL;
+				INFOPLIST_FILE = shootingGameTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = joanna.shootingGameTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/shootingGame.app/shootingGame";
+			};
+			name = Release;
+		};
+		2A4872EE1DB17750005B9841 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = XU9ZPKTAZL;
+				INFOPLIST_FILE = shootingGameUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = joanna.shootingGameUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = shootingGame;
+			};
+			name = Debug;
+		};
+		2A4872EF1DB17750005B9841 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = XU9ZPKTAZL;
+				INFOPLIST_FILE = shootingGameUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = joanna.shootingGameUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = shootingGame;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2A4872B41DB1774F005B9841 /* Build configuration list for PBXProject "shootingGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A4872E51DB17750005B9841 /* Debug */,
+				2A4872E61DB17750005B9841 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A4872E71DB17750005B9841 /* Build configuration list for PBXNativeTarget "shootingGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A4872E81DB17750005B9841 /* Debug */,
+				2A4872E91DB17750005B9841 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A4872EA1DB17750005B9841 /* Build configuration list for PBXNativeTarget "shootingGameTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A4872EB1DB17750005B9841 /* Debug */,
+				2A4872EC1DB17750005B9841 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2A4872ED1DB17750005B9841 /* Build configuration list for PBXNativeTarget "shootingGameUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2A4872EE1DB17750005B9841 /* Debug */,
+				2A4872EF1DB17750005B9841 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2A4872B11DB1774F005B9841 /* Project object */;
+}
