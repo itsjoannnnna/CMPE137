@@ -204,6 +204,9 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         }
         if(Score > 150 && Score <= 180){
             Level = 6
+            self.view?.isPaused = true
+            self.view?.presentScene(GameScene6())
+            self.view?.isPaused = false
         }
         if(Score > 180 && Score <= 210){
             Level = 7
@@ -222,6 +225,8 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         }
         if(Score > 330 && Score <= 360){
             Level = 12
+            self.view?.isPaused = true
+            self.view?.presentScene(GameScene12())
         }
     }
     
