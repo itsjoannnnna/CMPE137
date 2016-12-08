@@ -207,6 +207,8 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         if(Score > 150 && Score <= 180){
             Level = 6
             self.view?.isPaused = true
+            let Level6Score = UserDefaults.standard
+            Level6Score.set(Score, forKey: "Level6Score")
             self.view?.presentScene(GameScene6())
             self.view?.isPaused = false
         }
@@ -228,7 +230,11 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         if(Score > 330 && Score <= 360){
             Level = 12
             self.view?.isPaused = true
+            let Level12Score = UserDefaults.standard
+            Level12Score.set(Score, forKey: "Level12Score")
             //self.view?.presentScene(GameScene12())
+            self.view?.isPaused = false
+            self.view?.presentScene(WinningScene())
         }
     }
     

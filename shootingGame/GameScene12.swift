@@ -1,7 +1,7 @@
 import SpriteKit
 import GameplayKit
 
-struct GameSixPhysicsCategory{
+struct GameTwelvePhysicsCategory{
     static let Aliens: UInt32 = 1 //lets the last bit equal to 1
     static let Bullet: UInt32 = 2 // lets the last bits equal to 2
     static let Player: UInt32 = 3 //lets the last bits equal to 3
@@ -10,10 +10,10 @@ struct GameSixPhysicsCategory{
     static let BossBullet: UInt32 = 6
 }
 
-class GameScene6: SKScene, SKPhysicsContactDelegate {
+class GameScene12: SKScene, SKPhysicsContactDelegate {
     
     var HighScore = Int()
-    var Level6Score = Int()
+    var Level12Score = Int()
     var pauseButton: SKSpriteNode?
     var playButton: SKSpriteNode?
     let backgroundMusic = SKAudioNode(fileNamed: "NewYork.mp3")
@@ -116,7 +116,7 @@ class GameScene6: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         
         //adds the score label to the top of the screen
-        ScoreLabel.text = "\(Level6Score)"
+        ScoreLabel.text = "\(Level12Score)"
         ScoreLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
         ScoreLabel.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.3)
         self.view?.addSubview(ScoreLabel)
@@ -301,14 +301,14 @@ class GameScene6: SKScene, SKPhysicsContactDelegate {
     }
     
     func firePlayerBullets(forUpdate currentTime: CFTimeInterval ){
-//        let existingBullet = childNode(withName: PlayerFiredBulletName)
-//        if existingBullet == nil{
-            if let Player = childNode(withName: PlayerName){
-                let bullet = makeBullet(ofType: .playerFired)
-                bullet.position = CGPoint(x: Player.position.x, y: Player.position.y + Player.frame.size.height - bullet.frame.size.height/2)
-                let bulletDestination = CGPoint(x: Player.position.x, y: frame.size.height + bullet.frame.size.height/2)
-                fireBullet(bullet: bullet, toDestination: bulletDestination, withDuration: 0.8)
-            }
+        //        let existingBullet = childNode(withName: PlayerFiredBulletName)
+        //        if existingBullet == nil{
+        if let Player = childNode(withName: PlayerName){
+            let bullet = makeBullet(ofType: .playerFired)
+            bullet.position = CGPoint(x: Player.position.x, y: Player.position.y + Player.frame.size.height - bullet.frame.size.height/2)
+            let bulletDestination = CGPoint(x: Player.position.x, y: frame.size.height + bullet.frame.size.height/2)
+            fireBullet(bullet: bullet, toDestination: bulletDestination, withDuration: 0.8)
+        }
         //}
         
     }
