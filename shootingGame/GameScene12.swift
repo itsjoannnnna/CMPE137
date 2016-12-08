@@ -20,11 +20,13 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
     var pauseButton: SKSpriteNode?
     var playButton: SKSpriteNode?
     let backgroundMusic = SKAudioNode(fileNamed: "NewYork.mp3")
+    var lastTouch: CGPoint? = nil
     
     @IBInspectable
-    var Player = SKSpriteNode(imageNamed: "rocket1.png")
     let PlayerName = "player"
     let PlayerBulletName = "playerbullet"
+    
+    let player = SKSpriteNode(imageNamed: "rocket1.png")
     
     var ScoreLabel = UILabel()
     
@@ -44,6 +46,7 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
     var contentCreated = false
     let BossName = "boss"
     let BossSize = CGSize(width: 50, height: 25)
+    let PlayerSize = CGSize(width: 30, height:16)
     
     enum BossType {
         case a
@@ -159,33 +162,31 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
         setupPlayer()
     }
     
-    //makes boss look the way it does
-    func loadBossTextures(ofType bossType: BossType) -> [SKTexture] {
-        
-        return [SKTexture(imageNamed: "InvaderA_00.png"),
-                SKTexture(imageNamed: "InvaderA_01.png")]
-    }
-    
     func makeBoss() -> SKNode {
         let boss = SKSpriteNode(imageNamed: "giantalien.png")
         boss.name = BossName
+        boss.physicsBody = SKPhysicsBody(rectangleOf: boss.frame.size)
+        boss.physicsBody!.isDynamic = false
+        boss.physicsBody!.categoryBitMask = BossCategory
+        boss.physicsBody!.contactTestBitMask = 0x0
+        boss.physicsBody!.collisionBitMask = 0x0
         return boss
     }
     
+    func makePlayer()->SKNode{
+        player.name = PlayerName
+        return player
+    }
+    
     func setupPlayer() {
-        Player.position = CGPoint(x: BossSize.width*5, y: (BossSize.height)*4)
-        Player.physicsBody = SKPhysicsBody(rectangleOf: Player.size)
-        Player.physicsBody?.affectedByGravity = false
-        Player.physicsBody?.categoryBitMask = PlayerCategory
-        Player.physicsBody?.contactTestBitMask = 0x0
-        Player.physicsBody!.collisionBitMask = SceneEdgeCategory
-        Player.physicsBody?.isDynamic = true
-        addChild(Player)
+        let player = makePlayer()
+        player.position = CGPoint(x: PlayerSize.width*8, y: PlayerSize.height * 8)
+        addChild(player)
     }
     
     func setupBoss() {
         let boss = makeBoss()
-        boss.position = CGPoint(x: BossSize.width*8, y: (BossSize.height-2)*24)
+        boss.position = CGPoint(x: BossSize.width*8, y: (BossSize.height-1)*24)
         addChild(boss)
     }
     
@@ -201,6 +202,15 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
             y: size.height - (40 + healthLabel.frame.size.height/2)
         )
         addChild(healthLabel)
+    }
+    
+    func adjustScore() {
+        Level12Score += 1
+        if Level12Score == 180{
+            let sendLevel6Score = UserDefaults.standard
+            sendLevel6Score.set(Level12Score, forKey: "Score")
+            self.view?.presentScene(GameScene1())
+        }
     }
     
     func adjustBossHealth(by healthAdjustment: Float) {
@@ -344,18 +354,6 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func processUserTaps(forUpdate currentTime: CFTimeInterval) {
-        // 1
-        for tapCount in tapQueue {
-            if tapCount == 1 {
-                // 2
-                firePlayerBullets(forUpdate: currentTime)
-            }
-            // 3
-            tapQueue.remove(at: 0)
-        }
-    }
-    
     override func update(_ currentTime: TimeInterval) {
         processContacts(forUpdate: currentTime)
         if isGameOver() {
@@ -364,7 +362,6 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
         moveBoss(forUpdate: currentTime)
         fireBossBullets(forUpdate: currentTime)
         firePlayerBullets(forUpdate: currentTime)
-        processUserTaps(forUpdate: currentTime)
     }
     
     func determineBossMovementDirection() {
@@ -467,7 +464,7 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch: AnyObject in touches{
             let location = touch.location(in: self)
-            Player.position.x = location.x
+            player.position.x = location.x
         }
         
         let touch = touches.first! as UITouch
@@ -489,7 +486,7 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch: AnyObject in touches{
             let location = touch.location(in: self)
-            Player.position.x = location.x
+            player.position.x = location.x
         }
     }
     
