@@ -42,6 +42,11 @@
 		2A80029B1DCAF70B00C0FDF1 /* NewYork.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2A80029A1DCAF70A00C0FDF1 /* NewYork.mp3 */; };
 		2A9864A21DF9D0EB00A4862B /* winning1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A9864A11DF9D0EB00A4862B /* winning1.png */; };
 		2A9864A41DF9D0EF00A4862B /* youwon1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A9864A31DF9D0EF00A4862B /* youwon1.png */; };
+		2A9864A61DF9E1F000A4862B /* giantalien.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A9864A51DF9E1F000A4862B /* giantalien.png */; };
+		2A9864A81DF9E2C000A4862B /* IntroScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9864A71DF9E2C000A4862B /* IntroScene.swift */; };
+		2A9864AA1DF9E6F400A4862B /* Pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A9864A91DF9E6F400A4862B /* Pause.png */; };
+		2A9864AC1DF9E6FE00A4862B /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A9864AB1DF9E6FE00A4862B /* Play.png */; };
+		2A9864AE1DF9E90700A4862B /* GameScene12.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2A9864AD1DF9E90700A4862B /* GameScene12.sks */; };
 		2AA24C761DF7751C00E9EAB9 /* GameScene6.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2AA24C751DF7751C00E9EAB9 /* GameScene6.sks */; };
 		2AA24C781DF7752D00E9EAB9 /* alienboss.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AA24C771DF7752D00E9EAB9 /* alienboss.png */; };
 		2AD177C31DF60E4400AC7D60 /* special1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD177C21DF60E4400AC7D60 /* special1.png */; };
@@ -58,8 +63,6 @@
 		2AD294961DF22B0A00A959A1 /* SignUpScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2AD294951DF22B0A00A959A1 /* SignUpScene.sks */; };
 		2AD294981DF22B2000A959A1 /* LoginScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2AD294971DF22B2000A959A1 /* LoginScene.sks */; };
 		2ADE2B8E1DB5B566007DB2C0 /* alien.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ADE2B8C1DB5B566007DB2C0 /* alien.png */; };
-		2AE956361DDF75E500A8A5BF /* pause.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2AE956341DDF75E500A8A5BF /* pause.jpg */; };
-		2AE956371DDF75E500A8A5BF /* play.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2AE956351DDF75E500A8A5BF /* play.jpg */; };
 		839C56D81102199F08A8591C /* libPods-shootingGame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BFEB1557FF359647F381637E /* libPods-shootingGame.a */; };
 /* End PBXBuildFile section */
 
@@ -123,6 +126,11 @@
 		2A80029A1DCAF70A00C0FDF1 /* NewYork.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NewYork.mp3; sourceTree = "<group>"; };
 		2A9864A11DF9D0EB00A4862B /* winning1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = winning1.png; sourceTree = "<group>"; };
 		2A9864A31DF9D0EF00A4862B /* youwon1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = youwon1.png; sourceTree = "<group>"; };
+		2A9864A51DF9E1F000A4862B /* giantalien.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = giantalien.png; sourceTree = "<group>"; };
+		2A9864A71DF9E2C000A4862B /* IntroScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroScene.swift; sourceTree = "<group>"; };
+		2A9864A91DF9E6F400A4862B /* Pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Pause.png; sourceTree = "<group>"; };
+		2A9864AB1DF9E6FE00A4862B /* Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Play.png; sourceTree = "<group>"; };
+		2A9864AD1DF9E90700A4862B /* GameScene12.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene12.sks; sourceTree = "<group>"; };
 		2AA24C751DF7751C00E9EAB9 /* GameScene6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene6.sks; sourceTree = "<group>"; };
 		2AA24C771DF7752D00E9EAB9 /* alienboss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alienboss.png; sourceTree = "<group>"; };
 		2AD177C21DF60E4400AC7D60 /* special1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = special1.png; sourceTree = "<group>"; };
@@ -139,8 +147,6 @@
 		2AD294951DF22B0A00A959A1 /* SignUpScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SignUpScene.sks; sourceTree = "<group>"; };
 		2AD294971DF22B2000A959A1 /* LoginScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LoginScene.sks; sourceTree = "<group>"; };
 		2ADE2B8C1DB5B566007DB2C0 /* alien.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alien.png; sourceTree = "<group>"; };
-		2AE956341DDF75E500A8A5BF /* pause.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pause.jpg; sourceTree = "<group>"; };
-		2AE956351DDF75E500A8A5BF /* play.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = play.jpg; sourceTree = "<group>"; };
 		BFEB1557FF359647F381637E /* libPods-shootingGame.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-shootingGame.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE60A89633158003D4C065FF /* Pods-shootingGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shootingGame.release.xcconfig"; path = "Pods/Target Support Files/Pods-shootingGame/Pods-shootingGame.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -208,8 +214,10 @@
 				2AD294951DF22B0A00A959A1 /* SignUpScene.sks */,
 				2AD294971DF22B2000A959A1 /* LoginScene.sks */,
 				2AD294811DF20E4A00A959A1 /* SpecialScene.sks */,
+				2A9864AD1DF9E90700A4862B /* GameScene12.sks */,
 				2A4872C91DB17750005B9841 /* Assets.xcassets */,
 				2A4872C21DB17750005B9841 /* GameScene.swift */,
+				2A9864A71DF9E2C000A4862B /* IntroScene.swift */,
 				2A65C80C1DDF86F200FD3ABE /* GameShop.swift */,
 				2AA24C751DF7751C00E9EAB9 /* GameScene6.sks */,
 				2A65C80A1DDF860500FD3ABE /* GameScene1.swift */,
@@ -257,17 +265,18 @@
 				2A9864A11DF9D0EB00A4862B /* winning1.png */,
 				2A1525C51DF4E23600C1470A /* money1.png */,
 				2A9864A31DF9D0EF00A4862B /* youwon1.png */,
-				2AE956341DDF75E500A8A5BF /* pause.jpg */,
 				2A1525C91DF4F2F500C1470A /* new_bullet.png */,
+				2A9864A51DF9E1F000A4862B /* giantalien.png */,
 				2AD2948F1DF2284800A959A1 /* incorrect.png */,
 				2AD177CA1DF611A400AC7D60 /* finalStart.png */,
+				2A9864A91DF9E6F400A4862B /* Pause.png */,
 				2AD177C21DF60E4400AC7D60 /* special1.png */,
 				2AD177C81DF610F900AC7D60 /* shopButton1.png */,
+				2A9864AB1DF9E6FE00A4862B /* Play.png */,
 				2AD177CC1DF6125C00AC7D60 /* StartButton1.png */,
 				2AD177C61DF6101A00AC7D60 /* loginButton.png */,
 				2A5E15801DF52064007892C2 /* Sign-Up.png */,
 				2A5E15821DF52086007892C2 /* Login2.png */,
-				2AE956351DDF75E500A8A5BF /* play.jpg */,
 				2A65C80E1DDF8BE300FD3ABE /* StartButton.png */,
 				2A5E157E1DF52024007892C2 /* Shop.png */,
 				2A4872CB1DB17750005B9841 /* LaunchScreen.storyboard */,
@@ -411,17 +420,17 @@
 				2A80029B1DCAF70B00C0FDF1 /* NewYork.mp3 in Resources */,
 				2AA24C761DF7751C00E9EAB9 /* GameScene6.sks in Resources */,
 				2AA24C781DF7752D00E9EAB9 /* alienboss.png in Resources */,
-				2AE956371DDF75E500A8A5BF /* play.jpg in Resources */,
 				2A9864A41DF9D0EF00A4862B /* youwon1.png in Resources */,
 				2A1525C61DF4E23600C1470A /* money1.png in Resources */,
 				2A4872C81DB17750005B9841 /* Main.storyboard in Resources */,
 				2AD294981DF22B2000A959A1 /* LoginScene.sks in Resources */,
 				2A5E15811DF52064007892C2 /* Sign-Up.png in Resources */,
 				2A1B00BC1DF91FF600A9CE32 /* boss_bullet.png in Resources */,
+				2A9864AE1DF9E90700A4862B /* GameScene12.sks in Resources */,
 				2A4872BF1DB17750005B9841 /* GameScene.sks in Resources */,
 				2A0D86C81DCA926100EE3AA1 /* GoogleService-Info.plist in Resources */,
 				2A5E15831DF52086007892C2 /* Login2.png in Resources */,
-				2AE956361DDF75E500A8A5BF /* pause.jpg in Resources */,
+				2A9864AC1DF9E6FE00A4862B /* Play.png in Resources */,
 				2A9864A21DF9D0EB00A4862B /* winning1.png in Resources */,
 				2A4872CA1DB17750005B9841 /* Assets.xcassets in Resources */,
 				2A5E15791DF51762007892C2 /* gameover1.png in Resources */,
@@ -438,9 +447,11 @@
 				2A4872C11DB17750005B9841 /* Actions.sks in Resources */,
 				2AD177C71DF6101A00AC7D60 /* loginButton.png in Resources */,
 				2A3FB0BC1DF24A900042B32C /* spark.png in Resources */,
+				2A9864A61DF9E1F000A4862B /* giantalien.png in Resources */,
 				2A65C8111DDF8BF300FD3ABE /* GameScene1.sks in Resources */,
 				2AD294821DF20E4A00A959A1 /* SpecialScene.sks in Resources */,
 				2ADE2B8E1DB5B566007DB2C0 /* alien.png in Resources */,
+				2A9864AA1DF9E6F400A4862B /* Pause.png in Resources */,
 				2A1525CE1DF5041300C1470A /* threeShooter.png in Resources */,
 				2A1525CA1DF4F2F500C1470A /* new_bullet.png in Resources */,
 				2A5E157F1DF52024007892C2 /* Shop.png in Resources */,
@@ -527,6 +538,7 @@
 				2AD294941DF228EA00A959A1 /* SignUpScene.swift in Sources */,
 				2AD177CF1DF61D6C00AC7D60 /* GameScene6.swift in Sources */,
 				2A5E15771DF514CD007892C2 /* MoreInfoScene.swift in Sources */,
+				2A9864A81DF9E2C000A4862B /* IntroScene.swift in Sources */,
 				2A1B00C01DF9301300A9CE32 /* GameScene12.swift in Sources */,
 				2A65C80B1DDF860500FD3ABE /* GameScene1.swift in Sources */,
 				2A4872BD1DB17750005B9841 /* AppDelegate.swift in Sources */,

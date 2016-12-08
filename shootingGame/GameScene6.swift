@@ -12,6 +12,9 @@ struct GameSixPhysicsCategory{
 
 class GameScene6: SKScene, SKPhysicsContactDelegate {
     
+    //TAKE OUT AFTER TESTING
+    var returnBtn : UIButton!
+    
     var HighScore = Int()
     var Level6Score = Int()
     var pauseButton: SKSpriteNode?
@@ -120,6 +123,24 @@ class GameScene6: SKScene, SKPhysicsContactDelegate {
         ScoreLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
         ScoreLabel.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.3)
         self.view?.addSubview(ScoreLabel)
+        
+        //Return button for going back to HomeScreen
+        returnBtn = UIButton (frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))
+        returnBtn.center = CGPoint(x: view.frame.midX-160, y: view.frame.midY-350)
+        
+        returnBtn.setTitle("Return", for: UIControlState.normal)
+        returnBtn.setTitleColor(UIColor.red, for: UIControlState.normal)
+        returnBtn.addTarget(self, action: #selector(GameShop.Return), for: UIControlEvents.touchUpInside)
+        self.view!.addSubview(returnBtn)
+    }
+    
+    //Return function to redirect scene to HomeScreen
+    func Return(){
+        //move to specified scene
+        let scene = GameScene(fileNamed: "GameScene")
+        //starting transition between scenes
+        self.view?.presentScene(scene)
+        returnBtn.removeFromSuperview()
     }
     
     func createContent(){

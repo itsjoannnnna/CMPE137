@@ -82,7 +82,7 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         
         
         //positioning of the player in the field. makes it stay at the bottom of the string
-        Player.position = CGPoint(x: self.size.width/12, y: self.frame.size.height/7.5)
+        Player.position = CGPoint(x: self.size.width/12, y: -self.frame.size.height/3)
         Player.physicsBody = SKPhysicsBody(rectangleOf: Player.size)
         Player.physicsBody?.affectedByGravity = false
         
@@ -208,7 +208,7 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
             Level = 6
             let Level6Score = UserDefaults.standard
             Level6Score.set(Score, forKey: "Level6Score")
-            self.view?.presentScene(GameScene6())
+            callLevel6()
         }
         if(Score > 180 && Score <= 210){
             Level = 7
@@ -229,9 +229,16 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
             Level = 12
             let Level12Score = UserDefaults.standard
             Level12Score.set(Score, forKey: "Level12Score")
-            self.view?.presentScene(GameScene12())
+            callLevel12()
             self.view?.presentScene(WinningScene())
         }
+    }
+    
+    func callLevel6(){
+        self.view?.presentScene(GameScene6())
+    }
+    func callLevel12(){
+        self.view?.presentScene(GameScene12())
     }
     
     //function to shoot the bullets from behind the rocketship

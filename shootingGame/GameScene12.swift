@@ -12,6 +12,9 @@ struct GameTwelvePhysicsCategory{
 
 class GameScene12: SKScene, SKPhysicsContactDelegate {
     
+    //TAKE OUT AFTER TESTING
+    var returnBtn : UIButton!
+    
     var HighScore = Int()
     var Level12Score = Int()
     var pauseButton: SKSpriteNode?
@@ -120,6 +123,24 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
         ScoreLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
         ScoreLabel.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.3)
         self.view?.addSubview(ScoreLabel)
+        
+        //Return button for going back to HomeScreen
+        returnBtn = UIButton (frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))
+        returnBtn.center = CGPoint(x: view.frame.midX-160, y: view.frame.midY-350)
+        
+        returnBtn.setTitle("Return", for: UIControlState.normal)
+        returnBtn.setTitleColor(UIColor.red, for: UIControlState.normal)
+        returnBtn.addTarget(self, action: #selector(GameShop.Return), for: UIControlEvents.touchUpInside)
+        self.view!.addSubview(returnBtn)
+    }
+    
+    //Return function to redirect scene to HomeScreen
+    func Return(){
+        //move to specified scene
+        let scene = GameScene(fileNamed: "GameScene")
+        //starting transition between scenes
+        self.view?.presentScene(scene)
+        returnBtn.removeFromSuperview()
     }
     
     func createContent(){
@@ -146,7 +167,7 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
     }
     
     func makeBoss() -> SKNode {
-        let boss = SKSpriteNode(imageNamed: "alienboss.png")
+        let boss = SKSpriteNode(imageNamed: "giantalien.png")
         boss.name = BossName
         return boss
     }
@@ -164,7 +185,7 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
     
     func setupBoss() {
         let boss = makeBoss()
-        boss.position = CGPoint(x: BossSize.width*8, y: (BossSize.height-1)*24)
+        boss.position = CGPoint(x: BossSize.width*8, y: (BossSize.height-2)*24)
         addChild(boss)
     }
     
@@ -323,6 +344,18 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func processUserTaps(forUpdate currentTime: CFTimeInterval) {
+        // 1
+        for tapCount in tapQueue {
+            if tapCount == 1 {
+                // 2
+                firePlayerBullets(forUpdate: currentTime)
+            }
+            // 3
+            tapQueue.remove(at: 0)
+        }
+    }
+    
     override func update(_ currentTime: TimeInterval) {
         processContacts(forUpdate: currentTime)
         if isGameOver() {
@@ -331,6 +364,7 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
         moveBoss(forUpdate: currentTime)
         fireBossBullets(forUpdate: currentTime)
         firePlayerBullets(forUpdate: currentTime)
+        processUserTaps(forUpdate: currentTime)
     }
     
     func determineBossMovementDirection() {
