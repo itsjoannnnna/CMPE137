@@ -12,11 +12,7 @@ struct GameTwelvePhysicsCategory{
 
 class GameScene12: SKScene, SKPhysicsContactDelegate {
     
-    //TAKE OUT AFTER TESTING
-    var returnBtn : UIButton!
-    
     var HighScore = Int()
-    var Level12Score = Int()
     var pauseButton: SKSpriteNode?
     var playButton: SKSpriteNode?
     let backgroundMusic = SKAudioNode(fileNamed: "NewYork.mp3")
@@ -27,8 +23,6 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
     let PlayerBulletName = "playerbullet"
     
     let player = SKSpriteNode(imageNamed: "rocket1.png")
-    
-    var ScoreLabel = UILabel()
     
     //testing to see if tapping works in this scene
     var tapQueue = [Int]()
@@ -84,8 +78,8 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
     let BossCategory: UInt32 = 0x1 << 0
     let SceneEdgeCategory: UInt32 = 0x1 << 3
     let BossFiredBulletCategory: UInt32 = 0x1 << 4
-    let PlayerFiredBulletCategory: UInt32 = 0x1 << 5
-    let PlayerCategory: UInt32 = 0x1 << 1
+    let PlayerFiredBulletCategory: UInt32 = 0x1 << 1
+    let PlayerCategory: UInt32 = 0x1 << 2
     
     override func didMove(to view: SKView) {
         
@@ -107,6 +101,11 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
             self.contentCreated = true
         }
         
+        let nextGameButton = SKSpriteNode(imageNamed: "blackbox.jpeg")
+        nextGameButton.position = CGPoint(x: frame.midX-160, y: frame.midY-300)
+        nextGameButton.name = "nextlevel"
+        addChild(nextGameButton)
+        
         playButton = childNode(withName: "playButton") as? SKSpriteNode
         playButton?.isHidden = true
         pauseButton = childNode(withName: "pauseButton") as? SKSpriteNode
@@ -120,30 +119,13 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
         }
         
         physicsWorld.contactDelegate = self
-        
-        //adds the score label to the top of the screen
-        ScoreLabel.text = "\(Level12Score)"
-        ScoreLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
-        ScoreLabel.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.3)
-        self.view?.addSubview(ScoreLabel)
-        
-        //Return button for going back to HomeScreen
-        returnBtn = UIButton (frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))
-        returnBtn.center = CGPoint(x: view.frame.midX-160, y: view.frame.midY-350)
-        
-        returnBtn.setTitle("Return", for: UIControlState.normal)
-        returnBtn.setTitleColor(UIColor.red, for: UIControlState.normal)
-        returnBtn.addTarget(self, action: #selector(GameShop.Return), for: UIControlEvents.touchUpInside)
-        self.view!.addSubview(returnBtn)
     }
     
-    //Return function to redirect scene to HomeScreen
-    func Return(){
-        //move to specified scene
-        let scene = GameScene(fileNamed: "GameScene")
-        //starting transition between scenes
-        self.view?.presentScene(scene)
-        returnBtn.removeFromSuperview()
+    func callGameScene1(){
+        let transition = SKTransition.reveal(with: SKTransitionDirection.down, duration: 1.0)
+        let nextScene = GameScene1(size: (self.scene?.size)!)
+        nextScene.scaleMode = SKSceneScaleMode.aspectFill
+        self.scene?.view?.presentScene(nextScene, transition: transition)
     }
     
     func createContent(){
@@ -175,6 +157,9 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
     
     func makePlayer()->SKNode{
         player.name = PlayerName
+        //player.physicsBody!.categoryBitMask = PlayerCategory
+        //player.physicsBody!.contactTestBitMask = 0x0
+        //player.physicsBody!.collisionBitMask = SceneEdgeCategory
         return player
     }
     
@@ -186,7 +171,7 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
     
     func setupBoss() {
         let boss = makeBoss()
-        boss.position = CGPoint(x: BossSize.width*8, y: (BossSize.height-1)*24)
+        boss.position = CGPoint(x: BossSize.width*8, y: (BossSize.height-2)*24)
         addChild(boss)
     }
     
@@ -202,15 +187,6 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
             y: size.height - (40 + healthLabel.frame.size.height/2)
         )
         addChild(healthLabel)
-    }
-    
-    func adjustScore() {
-        Level12Score += 1
-        if Level12Score == 180{
-            let sendLevel6Score = UserDefaults.standard
-            sendLevel6Score.set(Level12Score, forKey: "Score")
-            self.view?.presentScene(GameScene1())
-        }
     }
     
     func adjustBossHealth(by healthAdjustment: Float) {
@@ -233,7 +209,7 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
             bullet.physicsBody!.isDynamic = true
             bullet.physicsBody!.affectedByGravity = false
             bullet.physicsBody!.categoryBitMask = BossFiredBulletCategory
-            bullet.physicsBody!.contactTestBitMask = PlayerCategory
+            bullet.physicsBody!.categoryBitMask = PlayerCategory
             bullet.physicsBody!.collisionBitMask = 0x0
         case .playerFired:
             bullet = SKSpriteNode(color: SKColor.red, size: BulletSize)
@@ -245,7 +221,6 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
             bullet.physicsBody!.contactTestBitMask = BossCategory
             bullet.physicsBody!.collisionBitMask = 0x0
             break
-            
         }
         return bullet
     }
@@ -415,8 +390,6 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
             if bossHealth <= 0.0 {
                 contact.bodyA.node!.removeFromParent()
                 contact.bodyB.node!.removeFromParent()
-                let Level1Score = UserDefaults.standard
-                Level1Score.set(Level12Score, forKey: "Level1Score")
                 self.view?.presentScene(GameScene1())
             } else {
                 if let boss = childNode(withName: BossType.name) {
@@ -480,6 +453,15 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
         }
         else if nodes.name == "playButton"{
             self.resumeGame()
+        }
+        let touchedNode = self.atPoint(touchLocation)
+        
+        //Start Game Button goes to first GameScene
+        if(touchedNode.name == "nextlevel"){
+            let gameOverScene = GameScene1(size: size)
+            gameOverScene.scaleMode = scaleMode
+            let transitionType = SKTransition.flipHorizontal(withDuration: 1.0)
+            view?.presentScene(gameOverScene,transition: transitionType)
         }
     }
     

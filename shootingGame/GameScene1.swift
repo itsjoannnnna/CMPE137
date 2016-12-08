@@ -204,13 +204,12 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         if(Score > 120 && Score <= 150){
             Level = 5
         }
-        if(Score > 150 && Score <= 180){
+        if(Score > 150 && Score < 180){
             Level = 6
-            let Level6Score = UserDefaults.standard
-            Level6Score.set(Score, forKey: "Level6Score")
             callLevel6()
+            Score += 30
         }
-        if(Score > 180 && Score <= 210){
+        if(Score == 180 && Score <= 210){
             Level = 7
         }
         if(Score > 210 && Score <= 240){
@@ -230,15 +229,29 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
             let Level12Score = UserDefaults.standard
             Level12Score.set(Score, forKey: "Level12Score")
             callLevel12()
-            self.view?.presentScene(WinningScene())
+            Score += 30
+            callWinningScene()
         }
     }
     
     func callLevel6(){
-        self.view?.presentScene(GameScene6())
+        let transition = SKTransition.reveal(with: SKTransitionDirection.down, duration: 1.0)
+        let nextScene = GameScene6(size: (self.scene?.size)!)
+        nextScene.scaleMode = SKSceneScaleMode.aspectFill
+        self.scene?.view?.presentScene(nextScene, transition: transition)
     }
     func callLevel12(){
-        self.view?.presentScene(GameScene12())
+        let transition = SKTransition.reveal(with: SKTransitionDirection.down, duration: 1.0)
+        let nextScene = GameScene12(size: (self.scene?.size)!)
+        nextScene.scaleMode = SKSceneScaleMode.aspectFill
+        self.scene?.view?.presentScene(nextScene, transition: transition)
+    }
+    
+    func callWinningScene(){
+        let transition = SKTransition.reveal(with: SKTransitionDirection.down, duration: 1.0)
+        let nextScene = WinningScene(size: (self.scene?.size)!)
+        nextScene.scaleMode = SKSceneScaleMode.aspectFill
+        self.scene?.view?.presentScene(nextScene, transition: transition)
     }
     
     //function to shoot the bullets from behind the rocketship
@@ -292,7 +305,7 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
     //function where aliens are falling from the sky
     func shootAlienEnemies(){
         let Aliens = SKSpriteNode(imageNamed: "alien.png")
-        let minValue = self.size.width/(-20)
+        let minValue = self.size.width/(-0.9)
         NSLog("Min: \(minValue)")
         let maxValue = self.size.width - 50
         NSLog("Max: \(maxValue)")
