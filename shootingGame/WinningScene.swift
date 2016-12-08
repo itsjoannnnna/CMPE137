@@ -29,8 +29,16 @@ class WinningScene : SKScene {
             addChild(stars)
         }
         
+        let CongratsTitleLabel = SKSpriteNode(imageNamed: "winning1.png")
+        CongratsTitleLabel.position = CGPoint(x: frame.midX, y: frame.midY+250)
+        addChild(CongratsTitleLabel)
+        
+        let YouWonTitleLabel = SKSpriteNode(imageNamed: "youwon1.png")
+        YouWonTitleLabel.position = CGPoint(x: frame.midX, y: frame.midY+200)
+        addChild(YouWonTitleLabel)
+        
         homescreenBtn = UIButton (frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))
-        homescreenBtn.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/3)
+        homescreenBtn.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/1.5)
         
         homescreenBtn.setTitle("Homescreen", for: UIControlState.normal)
         homescreenBtn.setTitleColor(UIColor.white, for: UIControlState.normal)

@@ -384,6 +384,9 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
             if bossHealth <= 0.0 {
                 contact.bodyA.node!.removeFromParent()
                 contact.bodyB.node!.removeFromParent()
+                let Level1Score = UserDefaults.standard
+                Level1Score.set(Level12Score, forKey: "Level1Score")
+                self.view?.presentScene(GameScene1())
             } else {
                 if let boss = childNode(withName: BossType.name) {
                     boss.alpha = CGFloat(bossHealth)
