@@ -15,6 +15,8 @@ struct PhysicsCategory{
     static let Bullet: UInt32 = 2 // lets the last bits equal to 2
     static let Player: UInt32 = 3 //lets the last bits equal to 3
     static let Money: UInt32 = 4
+    static let Boss: UInt32 = 5
+    static let BossBullet: UInt32 = 6
 }
 
 class GameScene1: SKScene, SKPhysicsContactDelegate {
@@ -226,7 +228,7 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         if(Score > 330 && Score <= 360){
             Level = 12
             self.view?.isPaused = true
-            self.view?.presentScene(GameScene12())
+            //self.view?.presentScene(GameScene12())
         }
     }
     

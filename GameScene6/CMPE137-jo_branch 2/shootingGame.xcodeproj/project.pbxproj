@@ -23,6 +23,9 @@
 		2A65C80B1DDF860500FD3ABE /* GameScene1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A65C80A1DDF860500FD3ABE /* GameScene1.swift */; };
 		2A65C80D1DDF86F200FD3ABE /* GameShop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A65C80C1DDF86F200FD3ABE /* GameShop.swift */; };
 		2A80029B1DCAF70B00C0FDF1 /* NewYork.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2A80029A1DCAF70A00C0FDF1 /* NewYork.mp3 */; };
+		2AA24C701DF762C100E9EAB9 /* movingStars.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2AA24C6F1DF762C100E9EAB9 /* movingStars.sks */; };
+		2AA24C721DF762D800E9EAB9 /* new_bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AA24C711DF762D800E9EAB9 /* new_bullet.png */; };
+		2AA24C741DF7632A00E9EAB9 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AA24C731DF7632A00E9EAB9 /* spark.png */; };
 		2AAB96F31DF758080099AA5A /* alienboss.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AAB96F21DF758080099AA5A /* alienboss.png */; };
 		2ADE2B8E1DB5B566007DB2C0 /* alien.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ADE2B8C1DB5B566007DB2C0 /* alien.png */; };
 		2ADE2B911DB5BEC1007DB2C0 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ADE2B901DB5BEC1007DB2C0 /* bullet.png */; };
@@ -90,6 +93,9 @@
 		2A65C80A1DDF860500FD3ABE /* GameScene1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameScene1.swift; sourceTree = "<group>"; };
 		2A65C80C1DDF86F200FD3ABE /* GameShop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameShop.swift; sourceTree = "<group>"; };
 		2A80029A1DCAF70A00C0FDF1 /* NewYork.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = NewYork.mp3; sourceTree = "<group>"; };
+		2AA24C6F1DF762C100E9EAB9 /* movingStars.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = movingStars.sks; sourceTree = "<group>"; };
+		2AA24C711DF762D800E9EAB9 /* new_bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_bullet.png; sourceTree = "<group>"; };
+		2AA24C731DF7632A00E9EAB9 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		2AAB96F21DF758080099AA5A /* alienboss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alienboss.png; sourceTree = "<group>"; };
 		2ADE2B8C1DB5B566007DB2C0 /* alien.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alien.png; sourceTree = "<group>"; };
 		2ADE2B901DB5BEC1007DB2C0 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
@@ -172,6 +178,7 @@
 				2ADE2B8B1DB5B4EC007DB2C0 /* Supporting Files */,
 				2A4872BC1DB17750005B9841 /* AppDelegate.swift */,
 				2A0D86C71DCA926100EE3AA1 /* GoogleService-Info.plist */,
+				2AA24C6F1DF762C100E9EAB9 /* movingStars.sks */,
 				2A4872BE1DB17750005B9841 /* GameScene.sks */,
 				2A04C6101DB93D9400989E11 /* EndScene.swift */,
 				2A4872C01DB17750005B9841 /* Actions.sks */,
@@ -211,9 +218,11 @@
 			children = (
 				2A80029A1DCAF70A00C0FDF1 /* NewYork.mp3 */,
 				2ADE2B901DB5BEC1007DB2C0 /* bullet.png */,
+				2AA24C731DF7632A00E9EAB9 /* spark.png */,
 				2AE956341DDF75E500A8A5BF /* pause.jpg */,
 				2AAB96F21DF758080099AA5A /* alienboss.png */,
 				3F3E62741DDF8AB700964BB4 /* StartButton.png */,
+				2AA24C711DF762D800E9EAB9 /* new_bullet.png */,
 				2AE956351DDF75E500A8A5BF /* play.jpg */,
 				2A4872CB1DB17750005B9841 /* LaunchScreen.storyboard */,
 				2A04C60E1DB93A3F00989E11 /* rocket1.png */,
@@ -392,8 +401,11 @@
 				3F37FCAD1DEF944400AA5CFD /* Ship@2x.png in Resources */,
 				3F37FCA71DEF943400AA5CFD /* InvaderC_00.png in Resources */,
 				2ADE2B911DB5BEC1007DB2C0 /* bullet.png in Resources */,
+				2AA24C721DF762D800E9EAB9 /* new_bullet.png in Resources */,
 				3F37FC9F1DEF941500AA5CFD /* InvaderB_00.png in Resources */,
 				3F37FCAF1DEF947700AA5CFD /* InvaderC_01.png in Resources */,
+				2AA24C701DF762C100E9EAB9 /* movingStars.sks in Resources */,
+				2AA24C741DF7632A00E9EAB9 /* spark.png in Resources */,
 				3F37FC971DEF93F800AA5CFD /* InvaderA_00.png in Resources */,
 				3F37FCA31DEF942300AA5CFD /* InvaderB_01.png in Resources */,
 				2A04C60F1DB93A3F00989E11 /* rocket1.png in Resources */,

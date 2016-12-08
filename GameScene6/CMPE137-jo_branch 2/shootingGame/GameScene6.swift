@@ -6,7 +6,6 @@ struct GameSixPhysicsCategory{
     static let Bullet: UInt32 = 2 // lets the last bits equal to 2
     static let Player: UInt32 = 3 //lets the last bits equal to 3
     static let Boss: UInt32 = 5
-    static let AlienBullet: UInt32 = 6
 }
 
 class GameScene6: SKScene, SKPhysicsContactDelegate {
@@ -19,6 +18,8 @@ class GameScene6: SKScene, SKPhysicsContactDelegate {
     
     @IBInspectable
     var Player = SKSpriteNode(imageNamed: "rocket1.png")
+    let PlayerName = "player"
+    let PlayerBulletName = "playerbullet"
     
     var ScoreLabel = UILabel()
     
@@ -58,6 +59,7 @@ class GameScene6: SKScene, SKPhysicsContactDelegate {
     
     enum BulletType {
         case bossFired
+        case playerFired
     }
     
     let BossGridSpacing = CGSize(width: 12, height: 12)
@@ -65,19 +67,29 @@ class GameScene6: SKScene, SKPhysicsContactDelegate {
     let BossColCount = 1
     let HealthHudName = "healthHud"
     let BossFiredBulletName = "bossFiredBullet"
+    let PlayerFiredBulletName = "playerFiredBullet"
     let BulletSize = CGSize(width:4, height:8)
-    let ShipName = "ship"
     
     let BossCategory: UInt32 = 0x1 << 0
     let SceneEdgeCategory: UInt32 = 0x1 << 3
     let BossFiredBulletCategory: UInt32 = 0x1 << 4
-    
+    let PlayerFiredBulletCategory: UInt32 = 0x1 << 5
+    let PlayerCategory: UInt32 = 0x1 << 1
     
     override func didMove(to view: SKView) {
         
         //Background Music
         backgroundMusic.autoplayLooped = true
         addChild(backgroundMusic)
+        
+        self.scene?.backgroundColor = UIColor.black
+        
+        //Adding Stars
+        if let stars = SKEmitterNode(fileNamed: "movingStars") {
+            stars.position = CGPoint(x: frame.size.width / 2, y: frame.size.height)
+            stars.zPosition = -1
+            addChild(stars)
+        }
         
         if(!self.contentCreated){
             self.createContent()
@@ -101,29 +113,16 @@ class GameScene6: SKScene, SKPhysicsContactDelegate {
         //background color for the playing field
         self.scene?.backgroundColor = UIColor.white
         
+//        //increasing the amount of time the bullets will come out of the rocket ship
+//        _ = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.shootBullets), userInfo: nil, repeats: true)
         
         
-//        //positioning of the player in the field. makes it stay at the bottom of the string
-//        Player.position = CGPoint(x: self.size.width/12, y: -self.frame.size.height/7.5)
-//        Player.physicsBody = SKPhysicsBody(rectangleOf: Player.size)
-//        Player.physicsBody?.affectedByGravity = false
-//        
-//        Player.physicsBody?.categoryBitMask = PhysicsCategory.Player
-//        Player.physicsBody?.contactTestBitMask = PhysicsCategory.Boss
-//        Player.physicsBody?.isDynamic = false
-//        addChild(Player)
-        
-        //increasing the amount of time the bullets will come out of the rocket ship
-        _ = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(self.shootBullets), userInfo: nil, repeats: true)
-        
-        
-        
+    
         //adds the score label to the top of the screen
         ScoreLabel.text = "\(Score)"
         ScoreLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 20))
         ScoreLabel.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.3)
         self.view?.addSubview(ScoreLabel)
-        
     }
     
     func createContent(){
@@ -133,7 +132,7 @@ class GameScene6: SKScene, SKPhysicsContactDelegate {
         setupBoss()
         setupPlayer()
         
-        self.backgroundColor = SKColor.black
+        self.scene?.backgroundColor = UIColor.black
     }
     
     
@@ -151,7 +150,7 @@ class GameScene6: SKScene, SKPhysicsContactDelegate {
         }
             
             //checks if the boss hit the players, or player hits boss
-        else if((firstBody.categoryBitMask == PhysicsCategory.AlienBullet && secondBody.categoryBitMask == PhysicsCategory.Player) || (firstBody.categoryBitMask == PhysicsCategory.Player && secondBody.categoryBitMask == PhysicsCategory.AlienBullet)){
+        else if((firstBody.categoryBitMask == PhysicsCategory.Boss && secondBody.categoryBitMask == PhysicsCategory.Player) || (firstBody.categoryBitMask == PhysicsCategory.Player && secondBody.categoryBitMask == PhysicsCategory.Boss)){
             
             let scoreDefault = UserDefaults.standard
             scoreDefault.set(Score, forKey: "Score")
@@ -186,9 +185,10 @@ class GameScene6: SKScene, SKPhysicsContactDelegate {
         Player.position = CGPoint(x: BossSize.width*5, y: (BossSize.height)*4)
         Player.physicsBody = SKPhysicsBody(rectangleOf: Player.size)
         Player.physicsBody?.affectedByGravity = false
-        Player.physicsBody?.categoryBitMask = PhysicsCategory.Player
-        Player.physicsBody?.contactTestBitMask = PhysicsCategory.Boss
-        Player.physicsBody?.isDynamic = false
+        Player.physicsBody?.categoryBitMask = PlayerCategory
+        Player.physicsBody?.contactTestBitMask = 0x0
+        Player.physicsBody!.collisionBitMask = SceneEdgeCategory
+        Player.physicsBody?.isDynamic = true
         addChild(Player)
     }
     
@@ -232,9 +232,19 @@ class GameScene6: SKScene, SKPhysicsContactDelegate {
             bullet.physicsBody!.isDynamic = true
             bullet.physicsBody!.affectedByGravity = false
             bullet.physicsBody!.categoryBitMask = BossFiredBulletCategory
-            bullet.physicsBody!.contactTestBitMask = PhysicsCategory.Boss
+            bullet.physicsBody!.contactTestBitMask = PlayerCategory
+            bullet.physicsBody!.collisionBitMask = 0x0
+        case .playerFired:
+            bullet = SKSpriteNode(color: SKColor.red, size: BulletSize)
+            bullet.name = PlayerFiredBulletName
+            bullet.physicsBody = SKPhysicsBody(rectangleOf: bullet.frame.size)
+            bullet.physicsBody!.isDynamic = true
+            bullet.physicsBody!.affectedByGravity = false
+            bullet.physicsBody!.categoryBitMask = PlayerFiredBulletCategory
+            bullet.physicsBody!.contactTestBitMask = BossCategory
             bullet.physicsBody!.collisionBitMask = 0x0
             break
+        
         }
         return bullet
     }
@@ -320,6 +330,20 @@ class GameScene6: SKScene, SKPhysicsContactDelegate {
         addChild(bullet)
     }
     
+    func firePlayerBullets(forUpdate currentTime: CFTimeInterval ){
+        _ = childNode(withName: PlayerFiredBulletName)
+        
+        //if existingBullet == nil{
+            if let player = childNode(withName: PlayerName){
+                let bullet = makeBullet(ofType: .playerFired)
+                bullet.position = CGPoint(x: player.position.x, y: player.position.y + player.frame.size.height - bullet.frame.size.height/2)
+                let bulletDestination = CGPoint(x: player.position.x, y: frame.size.height + bullet.frame.size.height/2)
+                fireBullet(bullet: bullet, toDestination: bulletDestination, withDuration: 1.0)
+            //}
+        }
+        
+    }
+    
     func processContacts(forUpdate currentTime: CFTimeInterval) {
         for contact in contactQueue {
             handle(contact)
@@ -337,6 +361,7 @@ class GameScene6: SKScene, SKPhysicsContactDelegate {
         moveBoss(forUpdate: currentTime)
         fireBossBullets(forUpdate: currentTime)
         processContacts(forUpdate: currentTime)
+        firePlayerBullets(forUpdate: currentTime)
     }
     
     func determineBossMovementDirection() {
@@ -401,7 +426,7 @@ class GameScene6: SKScene, SKPhysicsContactDelegate {
                     }
                 }
             }
-        } else if nodeNames.contains(BossType.name) && nodeNames.contains(BossFiredBulletName) {
+        } else if nodeNames.contains(BossType.name) && nodeNames.contains(PlayerBulletName) {
             contact.bodyA.node!.removeFromParent()
             contact.bodyB.node!.removeFromParent()
         }
@@ -419,7 +444,7 @@ class GameScene6: SKScene, SKPhysicsContactDelegate {
                 stop.pointee = true
             }
         }
-        let ship = childNode(withName: ShipName)
+        let ship = childNode(withName: PlayerName)
         return boss == nil || bossTooLow || ship == nil
     }
     
@@ -433,25 +458,26 @@ class GameScene6: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    //function to shoot the bullets from behind the rocketship
-    func shootBullets(){
-        let Bullet = SKSpriteNode(imageNamed: "bullet.png")
-        Bullet.zPosition = -5
-        Bullet.position = CGPoint(x: Player.position.x, y: Player.position.y)
-        
-        let shooting = SKAction.moveTo(y: self.size.height + 30, duration: 1.0)
-        let shootingDone = SKAction.removeFromParent()
-        Bullet.run(SKAction.sequence([shooting, shootingDone]))
-        //Bullet.run(SKAction.repeatForever(shooting))
-        
-        Bullet.physicsBody = SKPhysicsBody(rectangleOf: Bullet.size)
-        Bullet.physicsBody?.categoryBitMask = PhysicsCategory.Bullet
-        Bullet.physicsBody?.contactTestBitMask = PhysicsCategory.Boss //bullets go away from the
-        Bullet.physicsBody?.affectedByGravity = false // so the bullets don't fly off
-        Bullet.physicsBody?.isDynamic = false
-        self.addChild(Bullet)
-        
-    }
+//    //function to shoot the bullets from behind the rocketship
+//    func shootBullets(){
+//        let Bullet = SKSpriteNode(imageNamed: "new_bullet.png")
+//        Bullet.name = PlayerBulletName
+//        //Bullet = childNode(withName: PlayerBulletName) as! SKSpriteNode
+//        Bullet.zPosition = -5
+//        Bullet.position = CGPoint(x: Player.position.x, y: Player.position.y)
+//        
+//        let shooting = SKAction.moveTo(y: self.size.height + 30, duration: 1.0)
+//        let shootingDone = SKAction.removeFromParent()
+//        Bullet.run(SKAction.sequence([shooting, shootingDone]))
+//        //Bullet.run(SKAction.repeatForever(shooting))
+//        
+//        Bullet.physicsBody = SKPhysicsBody(rectangleOf: Bullet.size)
+//        Bullet.physicsBody?.categoryBitMask = PhysicsCategory.Bullet
+//        Bullet.physicsBody?.contactTestBitMask = PhysicsCategory.Boss //bullets go away from the
+//        Bullet.physicsBody?.affectedByGravity = false // so the bullets don't fly off
+//        Bullet.physicsBody?.isDynamic = false
+//        self.addChild(Bullet)
+//    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch: AnyObject in touches{

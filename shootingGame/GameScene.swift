@@ -69,7 +69,8 @@ class GameScene: SKScene {
         }
         //Login/Sign Up Button goes to Login scene
         if(touchedNode.name == "login"){
-            let gameOverScene = LoginScene(size: size)
+            //CHANGE BACK TO LOGIN
+            let gameOverScene = GameScene6(size: size)
             gameOverScene.scaleMode = scaleMode
             let transitionType = SKTransition.flipHorizontal(withDuration: 1.0)
             view?.presentScene(gameOverScene,transition: transitionType)
