@@ -55,7 +55,7 @@ class GameScene: SKScene {
         }
         //Unlimited Gameplay Button goes to unlimited GameScene
         if(touchedNode.name == "unlimitedgame"){
-            let gameOverScene = SpecialScene(size: size)
+            let gameOverScene = IntroScene2(size: size)
             gameOverScene.scaleMode = scaleMode
             let transitionType = SKTransition.flipHorizontal(withDuration: 1.0)
             view?.presentScene(gameOverScene,transition: transitionType)
@@ -63,7 +63,7 @@ class GameScene: SKScene {
         //CHANGE BACK TO SHOP
         //Game Shop Button goes to GameShop scene
         if(touchedNode.name == "gameshop"){
-            let gameOverScene = GameScene6(size: size)
+            let gameOverScene = GameShop(size: size)
             gameOverScene.scaleMode = scaleMode
             let transitionType = SKTransition.flipHorizontal(withDuration: 1.0)
             view?.presentScene(gameOverScene,transition: transitionType)
@@ -71,7 +71,7 @@ class GameScene: SKScene {
         //Login/Sign Up Button goes to Login scene
         if(touchedNode.name == "login"){
             //CHANGE BACK TO LOGIN
-            let gameOverScene = GameScene12(size: size)
+            let gameOverScene = LoginScene(size: size)
             gameOverScene.scaleMode = scaleMode
             let transitionType = SKTransition.flipHorizontal(withDuration: 1.0)
             view?.presentScene(gameOverScene,transition: transitionType)

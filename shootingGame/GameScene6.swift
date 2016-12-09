@@ -12,6 +12,7 @@ struct GameSixPhysicsCategory{
 
 class GameScene6: SKScene, SKPhysicsContactDelegate {
     
+    var Level6Score = Int()
     var HighScore = Int()
     var pauseButton: SKSpriteNode?
     var playButton: SKSpriteNode?
@@ -453,6 +454,7 @@ class GameScene6: SKScene, SKPhysicsContactDelegate {
         
         //Start Game Button goes to first GameScene
         if(touchedNode.name == "nextlevel"){
+            Level6Score += 30
             let gameOverScene = GameScene1(size: size)
             gameOverScene.scaleMode = scaleMode
             let transitionType = SKTransition.flipHorizontal(withDuration: 1.0)

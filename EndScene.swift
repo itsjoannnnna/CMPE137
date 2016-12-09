@@ -13,7 +13,7 @@ import GameplayKit
 
 class EndScene : SKScene {
     var homescreenBtn: UIButton!
-    var GameOverLabel: UILabel!
+    //var GameOverLabel: UILabel!
     var Highscore : Int!
     var ScoreLabel : UILabel!
     var HighScoreLabel : UILabel!
@@ -29,15 +29,19 @@ class EndScene : SKScene {
             addChild(stars)
         }
         
-        GameOverLabel = UILabel(frame:CGRect(x: 40, y:0, width: view.frame.size.width/1.6, height: 30))
-        GameOverLabel.textColor = UIColor.red
-        GameOverLabel.font = UIFont.boldSystemFont(ofSize: 40.0)
-        GameOverLabel.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/5)
-        GameOverLabel.text = "Game Over!"
-        self.view?.addSubview(GameOverLabel)
+        let GameShopTitleLabel = SKSpriteNode(imageNamed: "gameover1.png")
+        GameShopTitleLabel.position = CGPoint(x: frame.midX, y: frame.midY+250)
+        addChild(GameShopTitleLabel)
+        
+//        GameOverLabel = UILabel(frame:CGRect(x: 40, y:0, width: view.frame.size.width/1.6, height: 30))
+//        GameOverLabel.textColor = UIColor.red
+//        GameOverLabel.font = UIFont.boldSystemFont(ofSize: 40.0)
+//        GameOverLabel.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/5)
+//        GameOverLabel.text = "Game Over!"
+//        self.view?.addSubview(GameOverLabel)
         
         homescreenBtn = UIButton (frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))
-        homescreenBtn.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/3)
+        homescreenBtn.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/5)
         
         homescreenBtn.setTitle("Homescreen", for: UIControlState.normal)
         homescreenBtn.setTitleColor(UIColor.white, for: UIControlState.normal)
@@ -66,7 +70,7 @@ class EndScene : SKScene {
     func Homescreen(){
         let scene = GameScene(fileNamed: "GameScene")
         self.view?.presentScene(scene)
-        GameOverLabel.removeFromSuperview()
+        //GameOverLabel.removeFromSuperview()
         homescreenBtn.removeFromSuperview()
         HighScoreLabel.removeFromSuperview()
         ScoreLabel.removeFromSuperview()

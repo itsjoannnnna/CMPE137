@@ -54,7 +54,7 @@ class WinningScene : SKScene {
         ScoreLabel = UILabel(frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))
         ScoreLabel.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/1.2)
         ScoreLabel.textColor = UIColor.red
-        ScoreLabel.text = "Your score: \(Score)"
+        ScoreLabel.text = "Your score: 335"
         self.view?.addSubview(ScoreLabel)
         
         HighScoreLabel = UILabel(frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))

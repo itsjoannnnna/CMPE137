@@ -12,6 +12,13 @@ struct GameTwelvePhysicsCategory{
 
 class GameScene12: SKScene, SKPhysicsContactDelegate {
     
+    var Level12Score = Int()
+    var Level12Money = Int()
+    
+    var Level12Label = UILabel()
+    var Money12Label = UILabel()
+    var Score12Label = UILabel()
+    
     var HighScore = Int()
     var pauseButton: SKSpriteNode?
     var playButton: SKSpriteNode?
@@ -101,7 +108,7 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
             self.contentCreated = true
         }
         
-        let nextGameButton = SKSpriteNode(imageNamed: "blackbox.jpeg")
+        let nextGameButton = SKSpriteNode(imageNamed: "blackbox1.png")
         nextGameButton.position = CGPoint(x: frame.midX-160, y: frame.midY-300)
         nextGameButton.name = "nextlevel"
         addChild(nextGameButton)
@@ -119,6 +126,35 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
         }
         
         physicsWorld.contactDelegate = self
+        
+        let Level12ScoreDefault = UserDefaults.standard
+        Level12Score = Level12ScoreDefault.value(forKey: "Score") as! Int
+//        let Level12MoneyDefault = UserDefaults.standard
+//        Level12Money = Level12MoneyDefault.value(forKey: "MoneyToSpend") as! Int
+        
+        //adds the score label to the top of the screen
+        Score12Label = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 20))
+        Score12Label.textColor = UIColor.red
+        Score12Label.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.3)
+        Score12Label.font = UIFont.boldSystemFont(ofSize: 20.0)
+        Score12Label.text = "Score: 335"
+        self.view?.addSubview(Score12Label)
+        
+        //adds the level to the screen
+        Level12Label = UILabel(frame:CGRect(x: 200, y: 0, width: 300, height: 20))
+        Level12Label.textColor = UIColor.red
+        Level12Label.font = UIFont.boldSystemFont(ofSize: 20.0)
+        Level12Label.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.3)
+        Level12Label.text = "Level 12"
+        self.view?.addSubview(Level12Label)
+        
+        //adds the money amount to the screen
+        Money12Label = UILabel(frame:CGRect(x: 0, y: 715, width: 450, height: 20))
+        Money12Label.textColor = UIColor.red
+        Money12Label.font = UIFont.boldSystemFont(ofSize: 20.0)
+        Money12Label.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.3)
+        Money12Label.text = "Money: 45"
+        self.view?.addSubview(Money12Label)
     }
     
     func callGameScene1(){
@@ -456,13 +492,20 @@ class GameScene12: SKScene, SKPhysicsContactDelegate {
         }
         let touchedNode = self.atPoint(touchLocation)
         
-        //Start Game Button goes to first GameScene
+        //Black Button
         if(touchedNode.name == "nextlevel"){
-            let gameOverScene = GameScene1(size: size)
+            removeLabels()
+            let gameOverScene = WinningScene(size: size)
             gameOverScene.scaleMode = scaleMode
             let transitionType = SKTransition.flipHorizontal(withDuration: 1.0)
             view?.presentScene(gameOverScene,transition: transitionType)
         }
+    }
+    
+    func removeLabels(){
+        Level12Label.removeFromSuperview()
+        Money12Label.removeFromSuperview()
+        Score12Label.removeFromSuperview()
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {

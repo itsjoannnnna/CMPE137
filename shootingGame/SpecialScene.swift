@@ -66,7 +66,7 @@ class SpecialScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         
         //positioning of the player in the field. makes it stay at the bottom of the string
-        Player.position = CGPoint(x: self.size.width/12, y: self.frame.size.height/7.5)
+        Player.position = CGPoint(x: self.size.width/12, y: -self.frame.size.height/3)
         Player.physicsBody = SKPhysicsBody(rectangleOf: Player.size)
         Player.physicsBody?.affectedByGravity = false
         

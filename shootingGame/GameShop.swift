@@ -62,7 +62,9 @@ class GameShop: SKScene {
     }
     
     func MoreInfo(){
-        let scene = MoreInfoScene(fileNamed: "MoreInfoScene")
+        let scene = MoreInfoScene(size: size)
+        //let scene = MoreInfoScene(fileNamed: "MoreInfoScene")
+        scene.scaleMode = scaleMode
         self.view?.presentScene(scene)
         returnBtn.removeFromSuperview()
         moreInfoBtn.removeFromSuperview()

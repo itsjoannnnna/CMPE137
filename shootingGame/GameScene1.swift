@@ -175,7 +175,7 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
             
             firstBody.node?.removeFromParent()
             secondBody.node?.removeFromParent()
-            self.view?.presentScene(EndScene())
+            callEndScene()
             ScoreLabel.removeFromSuperview()
             LevelLabel.removeFromSuperview()
             playButton?.removeFromParent()
@@ -204,12 +204,10 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         if(Score > 120 && Score <= 150){
             Level = 5
         }
-        if(Score > 150 && Score < 180){
+        if(Score > 150 && Score <= 180){
             Level = 6
-            callLevel6()
-            Score += 30
         }
-        if(Score == 180 && Score <= 210){
+        if(Score > 180 && Score <= 210){
             Level = 7
         }
         if(Score > 210 && Score <= 240){
@@ -226,21 +224,30 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         }
         if(Score > 330 && Score <= 360){
             Level = 12
-            let Level12Score = UserDefaults.standard
-            Level12Score.set(Score, forKey: "Level12Score")
             callLevel12()
-            Score += 30
-            callWinningScene()
+            ScoreLabel.removeFromSuperview()
+            MoneyLabel.removeFromSuperview()
+            LevelLabel.removeFromSuperview()
         }
     }
     
-    func callLevel6(){
+//    func callLevel6(){
+//        let transition = SKTransition.reveal(with: SKTransitionDirection.down, duration: 1.0)
+//        let nextScene = GameScene6(size: (self.scene?.size)!)
+//        nextScene.scaleMode = SKSceneScaleMode.aspectFill
+//        self.scene?.view?.presentScene(nextScene, transition: transition)
+//    }
+    
+    func callEndScene(){
+        callingValues()
         let transition = SKTransition.reveal(with: SKTransitionDirection.down, duration: 1.0)
-        let nextScene = GameScene6(size: (self.scene?.size)!)
+        let nextScene = EndScene(size: (self.scene?.size)!)
         nextScene.scaleMode = SKSceneScaleMode.aspectFill
         self.scene?.view?.presentScene(nextScene, transition: transition)
     }
+    
     func callLevel12(){
+        callingValues()
         let transition = SKTransition.reveal(with: SKTransitionDirection.down, duration: 1.0)
         let nextScene = GameScene12(size: (self.scene?.size)!)
         nextScene.scaleMode = SKSceneScaleMode.aspectFill
@@ -252,6 +259,13 @@ class GameScene1: SKScene, SKPhysicsContactDelegate {
         let nextScene = WinningScene(size: (self.scene?.size)!)
         nextScene.scaleMode = SKSceneScaleMode.aspectFill
         self.scene?.view?.presentScene(nextScene, transition: transition)
+    }
+    
+    func callingValues(){
+        let Level12Score = UserDefaults.standard
+        Level12Score.set(Score, forKey: "Level12Score")
+        let Level12Money = UserDefaults.standard
+        Level12Money.set(MoneyToSpend, forKey: "Level12Money")
     }
     
     //function to shoot the bullets from behind the rocketship

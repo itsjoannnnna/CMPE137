@@ -48,6 +48,8 @@
 		2A9864AC1DF9E6FE00A4862B /* Play.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A9864AB1DF9E6FE00A4862B /* Play.png */; };
 		2A9864AE1DF9E90700A4862B /* GameScene12.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2A9864AD1DF9E90700A4862B /* GameScene12.sks */; };
 		2A9864B01DFA1B0900A4862B /* blackbox.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 2A9864AF1DFA1B0900A4862B /* blackbox.jpeg */; };
+		2A9864B21DFA516900A4862B /* blackbox1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A9864B11DFA516900A4862B /* blackbox1.png */; };
+		2A9864B41DFA5CD300A4862B /* IntroScene2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9864B31DFA5CD300A4862B /* IntroScene2.swift */; };
 		2AA24C761DF7751C00E9EAB9 /* GameScene6.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2AA24C751DF7751C00E9EAB9 /* GameScene6.sks */; };
 		2AA24C781DF7752D00E9EAB9 /* alienboss.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AA24C771DF7752D00E9EAB9 /* alienboss.png */; };
 		2AD177C31DF60E4400AC7D60 /* special1.png in Resources */ = {isa = PBXBuildFile; fileRef = 2AD177C21DF60E4400AC7D60 /* special1.png */; };
@@ -133,6 +135,8 @@
 		2A9864AB1DF9E6FE00A4862B /* Play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Play.png; sourceTree = "<group>"; };
 		2A9864AD1DF9E90700A4862B /* GameScene12.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene12.sks; sourceTree = "<group>"; };
 		2A9864AF1DFA1B0900A4862B /* blackbox.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blackbox.jpeg; sourceTree = "<group>"; };
+		2A9864B11DFA516900A4862B /* blackbox1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackbox1.png; sourceTree = "<group>"; };
+		2A9864B31DFA5CD300A4862B /* IntroScene2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroScene2.swift; sourceTree = "<group>"; };
 		2AA24C751DF7751C00E9EAB9 /* GameScene6.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene6.sks; sourceTree = "<group>"; };
 		2AA24C771DF7752D00E9EAB9 /* alienboss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alienboss.png; sourceTree = "<group>"; };
 		2AD177C21DF60E4400AC7D60 /* special1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = special1.png; sourceTree = "<group>"; };
@@ -220,6 +224,7 @@
 				2A4872C91DB17750005B9841 /* Assets.xcassets */,
 				2A4872C21DB17750005B9841 /* GameScene.swift */,
 				2A9864A71DF9E2C000A4862B /* IntroScene.swift */,
+				2A9864B31DFA5CD300A4862B /* IntroScene2.swift */,
 				2A65C80C1DDF86F200FD3ABE /* GameShop.swift */,
 				2AA24C751DF7751C00E9EAB9 /* GameScene6.sks */,
 				2A65C80A1DDF860500FD3ABE /* GameScene1.swift */,
@@ -262,6 +267,7 @@
 				2A80029A1DCAF70A00C0FDF1 /* NewYork.mp3 */,
 				2AA24C771DF7752D00E9EAB9 /* alienboss.png */,
 				2A1525CD1DF5041300C1470A /* threeShooter.png */,
+				2A9864B11DFA516900A4862B /* blackbox1.png */,
 				2A5E15781DF51762007892C2 /* gameover1.png */,
 				2A5E157A1DF51876007892C2 /* title.png */,
 				2A9864A11DF9D0EB00A4862B /* winning1.png */,
@@ -429,6 +435,7 @@
 				2AD294981DF22B2000A959A1 /* LoginScene.sks in Resources */,
 				2A5E15811DF52064007892C2 /* Sign-Up.png in Resources */,
 				2A1B00BC1DF91FF600A9CE32 /* boss_bullet.png in Resources */,
+				2A9864B21DFA516900A4862B /* blackbox1.png in Resources */,
 				2A9864AE1DF9E90700A4862B /* GameScene12.sks in Resources */,
 				2A4872BF1DB17750005B9841 /* GameScene.sks in Resources */,
 				2A0D86C81DCA926100EE3AA1 /* GoogleService-Info.plist in Resources */,
@@ -545,6 +552,7 @@
 				2A9864A81DF9E2C000A4862B /* IntroScene.swift in Sources */,
 				2A1B00C01DF9301300A9CE32 /* GameScene12.swift in Sources */,
 				2A65C80B1DDF860500FD3ABE /* GameScene1.swift in Sources */,
+				2A9864B41DFA5CD300A4862B /* IntroScene2.swift in Sources */,
 				2A4872BD1DB17750005B9841 /* AppDelegate.swift in Sources */,
 				2AD294801DF20E3800A959A1 /* SpecialScene.swift in Sources */,
 			);
