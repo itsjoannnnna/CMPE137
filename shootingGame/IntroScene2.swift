@@ -54,6 +54,7 @@ class IntroScene2: SKScene {
         playTheGame.addTarget(self, action: #selector(IntroScene.Play), for: UIControlEvents.touchUpInside)
         self.view!.addSubview(homescreenBtn)
         self.view!.addSubview(playTheGame)
+        
     }
     
     func Homescreen(){
