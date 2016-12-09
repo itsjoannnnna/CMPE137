@@ -41,7 +41,7 @@ class EndScene : SKScene {
 //        self.view?.addSubview(GameOverLabel)
         
         homescreenBtn = UIButton (frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))
-        homescreenBtn.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/5)
+        homescreenBtn.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/1.7)
         
         homescreenBtn.setTitle("Homescreen", for: UIControlState.normal)
         homescreenBtn.setTitleColor(UIColor.white, for: UIControlState.normal)

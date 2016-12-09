@@ -122,7 +122,7 @@ class SpecialScene: SKScene, SKPhysicsContactDelegate {
             
             firstBody.node?.removeFromParent()
             secondBody.node?.removeFromParent()
-            self.view?.presentScene(EndScene())
+            callEndScene()
             ScoreLabel.removeFromSuperview()
             playButton?.removeFromParent()
             pauseButton?.removeFromParent()
@@ -130,6 +130,13 @@ class SpecialScene: SKScene, SKPhysicsContactDelegate {
             //            play.removeFromParent()
             //            pause.removeFromParent()
         }
+    }
+    
+    func callEndScene(){
+        let transition = SKTransition.reveal(with: SKTransitionDirection.down, duration: 1.0)
+        let nextScene = EndScene(size: (self.scene?.size)!)
+        nextScene.scaleMode = SKSceneScaleMode.aspectFill
+        self.scene?.view?.presentScene(nextScene, transition: transition)
     }
     
     //updates the levels on the top of the playing field

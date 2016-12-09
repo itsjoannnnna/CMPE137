@@ -35,7 +35,7 @@ class IntroScene2: SKScene {
         IntroLabel = UILabel(frame: CGRect(x: 0, y:0, width: view.frame.size.width/1.5, height: 30))
         IntroLabel.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.width/1.2)
         IntroLabel.textColor = UIColor.red
-        IntroLabel.text = "In a galaxy far, far away...."
+        IntroLabel.text = "Score as high as you can!"
         self.view?.addSubview(IntroLabel)
         
         homescreenBtn = UIButton (frame: CGRect(x: 0, y:0, width: view.frame.size.width/3, height: 30))
